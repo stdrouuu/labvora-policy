@@ -20,11 +20,15 @@
     <!-- Top Header -->
     <header class="max-w-6xl mx-auto px-6 pt-10 pb-6 border-b border-gray-100">
         <h1 class="text-3xl font-bold text-black tracking-tight">Kebijakan Privasi &amp; Penghapusan Akun Labvōra</h1>
-        <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: 30 Agustus 2026</p>
+        <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: 9 September 2026</p>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-8">
-        
+        <!-- Logo Overlay Banner -->
+         <div class="relative flex justify-center items-center py-8 mb-8 overflow-hidden">
+        <img src="logoname.jpg" alt="Labvōra" class="w-full max-w-xl h-auto object-contain relative z-10" />
+    </div>
+
         <!-- Breadcrumbs -->
         <nav class="flex items-center gap-2 text-xs text-gray-400 mb-8">
             <span>Beranda</span>
@@ -209,8 +213,30 @@
     </main>
 
     <!-- Footer -->
-    <footer class="max-w-6xl mx-auto px-6 mt-16 py-8 border-t border-gray-100 text-xs text-gray-400">
-        <p>&copy; 2026 Labvōra. Hak cipta dilindungi undang-undang.</p>
+    <footer class="relative bg-white border-t border-gray-100 overflow-hidden mt-16">
+        <!-- Content -->
+        <div class="relative z-10 max-w-6xl mx-auto px-6 pt-14 pb-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                <!-- Brand -->
+                <div class="md:col-span-5">
+                    <img src="logoname.jpg" alt="Labvōra" class="h-9 w-auto mb-4" />
+                    <p class="text-sm text-gray-500 leading-relaxed max-w-sm">
+                        Pesan tes lab, kelola hasil, dan kendalikan data privasi Anda dengan aman.
+                    </p>
+                    <div class="mt-6 space-y-3 text-sm">
+                    </div>
+                </div>
+
+            </div>
+            <div class="border-t border-gray-100 mt-12 pt-6 flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
+                <p class="text-xs text-gray-400">&copy; 2026 Labvōra. Hak cipta dilindungi undang-undang.</p>
+                <p class="text-xs text-gray-400">Terakhir diperbarui: 10 September 2026</p>
+            </div>
+        </div>
+        <!-- Giant logo overlay in design system color (teal) -->
+        <div class="absolute inset-x-0 bottom-0 z-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+            <img src="logoname.jpg" alt="" class="w-[130%] max-w-none h-auto object-cover object-top opacity-[0.07] translate-y-[28%] -ml-[5%]" />
+        </div>
     </footer>
 
 </body>
