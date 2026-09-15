@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Kebijakan Privasi Labvora: cara kami mengumpulkan, menggunakan, menyimpan, dan menghapus data pribadi serta akun Anda.">
+    <meta name="theme-color" content="#3A9DA6">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <meta property="og:title" content="Kebijakan Privasi & Penghapusan Akun Labvora">
     <meta property="og:description" content="Cara kami mengumpulkan, menggunakan, menyimpan, dan menghapus data pribadi serta akun Anda di aplikasi Labvora.">
@@ -17,8 +18,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html {
-            scroll-padding-top: 96px;
+            /* Tiap target sudah punya scroll-mt-24 (96px), jadi scrollport tidak perlu padding
+               ekstra — kalau tidak, offset-nya jadi dobel saat membuka link #anchor langsung. */
+            scroll-behavior: smooth;
+            scroll-padding-top: 0;
         }
+        .skip-link{position:fixed;z-index:100;top:10px;left:14px;padding:10px 14px;color:#fff;background:#101828;border-radius:8px;transform:translateY(-150%);font-family:"Plus Jakarta Sans",Arial,sans-serif}
+        .skip-link:focus{transform:translateY(0)}
 
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -50,12 +56,24 @@
         #toc .ml-3 .toc-link::before {
             left: -13px;
         }
+        .toc-link {
+            /* target sentuh lebih lega supaya semua item benar-benar bisa diklik */
+            padding: 3px 6px 3px 0;
+            border-radius: 4px;
+        }
         .toc-link.is-active {
             color: #3A9DA6;
             font-weight: 700;
         }
         .toc-link.is-active::before {
             opacity: 1;
+        }
+        .toc-link.is-active-parent {
+            color: #2f8b93;
+        }
+        .toc-link:focus-visible {
+            outline: 2px solid #3A9DA6;
+            outline-offset: 2px;
         }
         .sec-head {
             position: relative;
@@ -94,17 +112,49 @@
         details.toc-mobile[open] > summary::after {
             transform: rotate(225deg) translate(-1px, -1px);
         }
+        .toc-mobile .toc-link {
+            padding: 9px 6px;
+            margin-left: -6px;
+            border-radius: 6px;
+        }
+        .toc-mobile .toc-link::before {
+            display: none;
+        }
+        .toc-mobile .toc-link.is-active {
+            color: #3A9DA6;
+            background: #eaf6f7;
+        }
+        .toc-current {
+            display: block;
+            margin-top: 2px;
+            color: #3A9DA6;
+            font-size: .78rem;
+            font-weight: 600;
+        }
+        .toc-current:empty {
+            display: none;
+        }
+        #reading-spacer {
+            height: 0;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
 
         body.menu-open{overflow:hidden}
         body.menu-open::after{content:"";position:fixed;z-index:38;inset:74px 0 0;background:rgba(8,20,24,.62);pointer-events:auto}
 
-        /* Synchronized Navbar & Footer Styles */
+        /* Navbar — disamakan persis dengan index.html */
         .site-header{position:sticky;z-index:40;top:0;height:74px;background:rgba(255,255,255,.96);border-bottom:1px solid #edf0f2;backdrop-filter:blur(12px)}
         .nav-row{width:min(1160px,calc(100% - 48px));margin-inline:auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
+        /* Override .container Tailwind supaya gutter kiri-kanan sama persis kayak index (24px) */
+        .site-header .container.nav-row,.site-header .nav-row{width:min(1160px,calc(100% - 48px)) !important;max-width:none !important;margin-inline:auto !important;padding-inline:0 !important}
         .brand{display:inline-flex;align-items:center;min-width:0}
-        .brand img{width:162px;height:62px;object-fit:contain;object-position:left center}
-        .desktop-nav{display:flex;align-items:center;column-gap:30px;margin-left:auto;white-space:nowrap}
-        .desktop-nav a{color:#394252;font-size:.88rem;font-weight:500;transition:color .2s ease}
+        .brand img{width:162px !important;height:62px !important;max-width:none;object-fit:contain;object-position:left center}
+        .desktop-nav{display:flex;align-items:center;gap:30px;margin-left:auto}
+        .desktop-nav a{color:inherit;font-size:.88rem;font-weight:500;transition:color .2s ease}
         .desktop-nav a:hover{color:#3A9DA6}
         .desktop-nav a.active,.mobile-nav a.active{color:#3A9DA6;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
         .nav-button{display:inline-flex!important;align-items:center;min-height:42px;padding:0 18px;color:#fff!important;background:#3A9DA6!important;border-radius:999px;font-weight:600!important;transition:background .2s ease}
@@ -113,12 +163,23 @@
         .menu-button span,.menu-button span:before,.menu-button span:after{display:block;width:22px;height:2px;background:#3A9DA6;transition:none}
         .menu-button span{position:relative}.menu-button span:before,.menu-button span:after{content:"";position:absolute;left:0}.menu-button span:before{top:-7px}.menu-button span:after{top:7px}
         .menu-button[aria-expanded="true"] span,.menu-button[aria-expanded="true"] span:before,.menu-button[aria-expanded="true"] span:after{background:#3A9DA6;transform:none}
+        .menu-backdrop{display:none;position:fixed;z-index:38;inset:74px 0 0;background:rgba(8,20,24,.62)}
         .mobile-nav{position:fixed;z-index:39;inset:74px 0 auto;padding:18px 24px 24px;background:#fff;border-bottom:1px solid #e4e8ec;box-shadow:0 18px 35px rgba(16,24,40,.1)}
         .mobile-nav a{display:block;padding:13px 4px;border-bottom:1px solid #e4e8ec;font-weight:600}
-        .mobile-nav a:last-child{margin-top:14px;color:#fff;text-align:center;background:#3A9DA6;border:0;border-radius:9px}.mobile-nav a[href*="cara-hapus-akun"]{margin-top:0;color:#394252;background:transparent;text-align:left;border-bottom:1px solid #e4e8ec;border-radius:0}
+        .mobile-nav a:last-child{margin-top:14px;color:#fff;text-align:center;background:#3A9DA6;border:0;border-radius:9px}
+        @media (max-width:760px){
+            .mobile-nav{position:fixed !important;z-index:1000 !important;inset:74px 0 auto !important;display:block;padding:18px 24px 24px;background:#fff !important;border-bottom:1px solid #e4e8ec;box-shadow:0 18px 35px rgba(16,24,40,.1)}
+            .mobile-nav[hidden]{display:none !important}
+            .mobile-nav a{display:block !important;padding:13px 4px;border-bottom:1px solid #e4e8ec;font-weight:600}
+            .mobile-nav a:last-child{margin-top:14px;color:#fff;text-align:center;background:#3A9DA6;border:0;border-radius:9px}
+        }
+        /* Pastikan "Hapus akun" tidak pernah jadi tombol (sama seperti index.html) */
+        .mobile-nav a[href*="cara-hapus-akun"]{display:block !important;margin-top:0 !important;color:inherit !important;text-align:left !important;background:transparent !important;border:0 !important;border-bottom:1px solid #e4e8ec !important;border-radius:0 !important}
+        /* Tapi kalau sedang active, underline + teksnya harus teal seperti menu lain */
+        .mobile-nav a[href*="cara-hapus-akun"].active{color:#3A9DA6 !important;text-decoration:underline !important;text-decoration-thickness:2px !important;text-underline-offset:6px !important}
 
         .site-footer{position:relative;min-height:355px;padding:58px 0 28px;overflow:hidden;background:#fff;border-top:1px solid #e4e8ec;isolation:isolate}
-        .footer-container{width:min(1160px,calc(100% - 48px));margin-inline:auto;position:relative;z-index:2}
+        .footer-container{width:min(1160px,calc(100% - 72px));margin-inline:auto;position:relative;z-index:2}
         .footer-main{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;padding-bottom:42px}
         .footer-logo{width:235px;height:112px;margin:-25px 0 -14px;object-fit:contain;object-position:left center}
         .footer-copy{max-width:430px;color:#4b5565;font-size:.9rem}
@@ -130,16 +191,17 @@
         .footer-watermark img{width:125%;max-width:none;opacity:.055;transform:translate(-5%,38%)}
 
         @media(max-width:760px){
-            .nav-row{width:min(100% - 30px,650px)}
-            .desktop-nav{display:none}
-            .menu-button{display:flex}
+            .desktop-nav{display:none !important}
+            .menu-button{display:flex !important}
+            .site-header .container.nav-row,.site-header .nav-row{width:min(100% - 48px,650px) !important;max-width:none !important;margin-inline:auto !important;padding-inline:0 !important}
             .footer-main{grid-template-columns:1fr;gap:18px;padding-bottom:24px}
             .footer-logo{width:180px;height:86px;margin:-18px 0 -10px}
             .site-footer{min-height:auto;padding:42px 0 24px}
         }
         @media(max-width:500px){
-            .nav-row{width:min(100% - 22px,460px)}
-            .brand img{width:140px;height:56px}
+            .nav-row{width:min(100% - 48px,460px)}
+            .site-header .container.nav-row,.site-header .nav-row{width:min(100% - 48px,460px) !important;max-width:none !important;margin-inline:auto !important;padding-inline:0 !important}
+            .brand img{width:140px !important;height:56px !important;max-width:none}
             .footer-links{grid-template-columns:1fr}
             .footer-bottom{flex-direction:column;gap:7px}
             .footer-watermark img{width:115%;opacity:.035;transform:translate(-7%,55%)}
@@ -147,29 +209,55 @@
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased selection:bg-gray-200">
+    <a class="skip-link" href="#konten">Lewati ke konten</a>
 
     <!-- Navbar -->
     <header class="site-header">
-        <div class="nav-row">
-            <a class="brand" href="index.html#atas" aria-label="Labvōra, kembali ke beranda"><img src="assets/horiz.png" alt="Labvōra by Cinta Kasih" width="152" height="58"></a>
-        <nav class="desktop-nav" aria-label="Navigasi utama">
-            <a href="index.html">Beranda</a><a href="privacy-policy.html">Kebijakan Privasi</a><a href="privacy-policy.html#cara-hapus-akun" style="display:inline-flex;color:#394252!important;background:transparent!important;text-align:left!important;border:0;border-radius:0;">Hapus akun</a><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
+        <div class="container nav-row">
+            <a class="brand" href="index.html" aria-label="Labvōra, kembali ke atas"
+              ><img
+                src="assets/horiz.png"
+                alt="Labvōra by Cinta Kasih"
+                width="152"
+                height="58"
+            /></a>
+            <nav class="desktop-nav" aria-label="Navigasi utama">
+                <a href="index.html">Beranda</a
+                ><a class="active" href="privacy-policy.html">Kebijakan Privasi</a
+                ><a href="privacy-policy.html#cara-hapus-akun">Hapus akun</a
+                ><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
             </nav>
-            <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu"><span></span></button>
+            <button
+              class="menu-button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              aria-label="Buka menu"
+            >
+              <span></span>
+            </button>
         </div>
-        <nav class="mobile-nav" id="mobile-menu" aria-label="Navigasi seluler" hidden>
-            <a href="index.html">Beranda</a><a href="privacy-policy.html">Kebijakan Privasi</a><a href="privacy-policy.html#cara-hapus-akun" style="display:block;margin-top:0!important;padding:13px 4px;color:#394252!important;text-align:left!important;background:transparent!important;border:0;border-bottom:1px solid #e4e8ec!important;border-radius:0!important;">Hapus akun</a><a href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
+        <nav
+          class="mobile-nav"
+          id="mobile-menu"
+          aria-label="Navigasi seluler"
+          hidden
+          style="position:fixed;z-index:39;inset:74px 0 auto;padding:18px 24px 24px;background:#fff;border-bottom:1px solid var(--line,#e4e8ec);box-shadow:0 18px 35px rgba(16,24,40,.1);"
+        >
+            <a href="index.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;">Beranda</a
+            ><a class="active" href="privacy-policy.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;">Kebijakan Privasi</a
+            ><a href="privacy-policy.html#cara-hapus-akun" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;">Hapus akun</a
+            ><a href="mailto:brandon.412024022@civitas.ukrida.ac.id" style="display:block;margin-top:14px;padding:13px 4px;color:#fff;text-align:center;background:var(--teal,#3A9DA6);border:0;border-radius:9px;font-weight:600;">Hubungi Kami</a>
         </nav>
-        <div class="menu-backdrop" aria-hidden="true"></div>
     </header>
 
     <!-- Top Header -->
-    <header id="atas" class="max-w-6xl mx-auto px-6 pt-10 pb-6 border-b border-gray-100">
+    <header id="atas" class="max-w-6xl mx-auto px-9 pt-10 pb-6 border-b border-gray-100">
         <h1 class="text-3xl font-bold text-black tracking-tight">Kebijakan Privasi &amp; Penghapusan Akun Labvōra</h1>
         <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: 10 September 2026</p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pt-2 pb-8">
+    <main id="konten" class="max-w-6xl mx-auto px-9 pt-2 pb-8">
         <!-- Logo Overlay Banner -->
          <div class="relative flex justify-center items-center pt-0 pb-1 mb-2 overflow-hidden">
         <img src="assets/horiz.png" alt="Labvora by Cinta Kasih" class="block mx-auto w-full max-w-2xl h-auto object-contain relative z-10 -translate-x-[1%]" />
@@ -184,16 +272,23 @@
 
         <!-- Mobile Table of Contents -->
         <details class="toc-mobile lg:hidden mb-6 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
-            <summary class="cursor-pointer font-bold text-gray-800 flex items-center justify-between gap-3">Daftar isi</summary>
-            <nav class="mt-3 space-y-2 text-gray-600">
-                <a href="#pendahuluan" class="block hover:text-black">1. Pendahuluan</a>
-                <a href="#informasi-dikumpulkan" class="block hover:text-black">2. Informasi yang Kami Kumpulkan</a>
-                <a href="#tujuan-penggunaan" class="block hover:text-black">3. Tujuan Penggunaan Informasi</a>
-                <a href="#keamanan-data" class="block hover:text-black">4. Penyimpanan &amp; Keamanan Data</a>
-                <a href="#pembagian-data" class="block hover:text-black">5. Pembagian Data ke Pihak Ketiga</a>
-                <a href="#hak-pengguna" class="block hover:text-black">6. Hak Pengguna &amp; Penghapusan Akun</a>
-                <a href="#cara-hapus-akun" class="block pl-3 hover:text-black">6.1. Cara Menghapus Akun</a>
-                <a href="#persetujuan" class="block hover:text-black">7. Persetujuan Kebijakan</a>
+            <summary class="cursor-pointer font-bold text-gray-800 flex items-center justify-between gap-3">
+                <span>Daftar isi<span class="toc-current" data-toc-current></span></span>
+            </summary>
+            <nav class="mt-3 text-gray-600" aria-label="Daftar isi">
+                <a href="#pendahuluan" data-toc class="toc-link block hover:text-black">1. Pendahuluan</a>
+                <a href="#informasi-dikumpulkan" data-toc class="toc-link block hover:text-black">2. Informasi yang Kami Kumpulkan</a>
+                <a href="#data-diri" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">2.1. Identitas &amp; Data Diri</a>
+                <a href="#data-kesehatan" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">2.2. Data Kesehatan &amp; Kredensial</a>
+                <a href="#tujuan-penggunaan" data-toc class="toc-link block hover:text-black">3. Tujuan Penggunaan Informasi</a>
+                <a href="#keamanan-data" data-toc class="toc-link block hover:text-black">4. Penyimpanan &amp; Keamanan Data</a>
+                <a href="#pembagian-data" data-toc class="toc-link block hover:text-black">5. Pembagian Data ke Pihak Ketiga</a>
+                <a href="#hak-pengguna" data-toc class="toc-link block hover:text-black">6. Hak Pengguna &amp; Penghapusan Akun</a>
+                <a href="#cara-hapus-akun" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.1. Cara Menghapus Akun</a>
+                <a href="#data-dihapus" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.2. Data yang Dihapus</a>
+                <a href="#retensi-cadangan" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.3. Retensi &amp; Cadangan</a>
+                <a href="#bantuan-kontak" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.4. Bantuan Support</a>
+                <a href="#persetujuan" data-toc class="toc-link block hover:text-black">7. Persetujuan Kebijakan</a>
             </nav>
         </details>
 
@@ -335,26 +430,26 @@
             <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start text-xs text-gray-600 hidden lg:block">
                 <nav id="toc" class="space-y-3 border-l border-gray-100 pl-4">
                     <div>
-                        <a href="#pendahuluan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">1. Pendahuluan</a>
+                        <a href="#pendahuluan" data-toc class="toc-link hover:text-black transition block text-gray-700">1. Pendahuluan</a>
                     </div>
                     <div>
-                        <a href="#informasi-dikumpulkan" data-toc class="toc-link font-bold text-black hover:text-gray-700 block transition">2. Informasi yang Kami Kumpulkan</a>
+                        <a href="#informasi-dikumpulkan" data-toc class="toc-link hover:text-black transition block text-gray-700">2. Informasi yang Kami Kumpulkan</a>
                         <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
                             <a href="#data-diri" data-toc class="toc-link hover:text-black block transition text-gray-500">2.1. Identitas &amp; Data Diri</a>
                             <a href="#data-kesehatan" data-toc class="toc-link hover:text-black block transition text-gray-500">2.2. Data Kesehatan &amp; Kredensial</a>
                         </div>
                     </div>
                     <div>
-                        <a href="#tujuan-penggunaan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">3. Tujuan Penggunaan Informasi</a>
+                        <a href="#tujuan-penggunaan" data-toc class="toc-link hover:text-black transition block text-gray-700">3. Tujuan Penggunaan Informasi</a>
                     </div>
                     <div>
-                        <a href="#keamanan-data" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">4. Penyimpanan &amp; Keamanan Data</a>
+                        <a href="#keamanan-data" data-toc class="toc-link hover:text-black transition block text-gray-700">4. Penyimpanan &amp; Keamanan Data</a>
                     </div>
                     <div>
-                        <a href="#pembagian-data" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">5. Pembagian Data ke Pihak Ketiga</a>
+                        <a href="#pembagian-data" data-toc class="toc-link hover:text-black transition block text-gray-700">5. Pembagian Data ke Pihak Ketiga</a>
                     </div>
                     <div>
-                        <a href="#hak-pengguna" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">6. Hak Pengguna &amp; Penghapusan Akun</a>
+                        <a href="#hak-pengguna" data-toc class="toc-link hover:text-black transition block text-gray-700">6. Hak Pengguna &amp; Penghapusan Akun</a>
                         <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
                             <a href="#cara-hapus-akun" data-toc class="toc-link hover:text-black block transition text-gray-500">6.1. Cara Menghapus Akun</a>
                             <a href="#data-dihapus" data-toc class="toc-link hover:text-black block transition text-gray-500">6.2. Data yang Dihapus</a>
@@ -363,12 +458,15 @@
                         </div>
                     </div>
                     <div>
-                        <a href="#persetujuan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">7. Persetujuan Kebijakan</a>
+                        <a href="#persetujuan" data-toc class="toc-link hover:text-black transition block text-gray-700">7. Persetujuan Kebijakan</a>
                     </div>
                 </nav>
             </aside>
 
         </div>
+
+        <!-- Ruang baca tambahan: memastikan section terakhir tetap bisa naik ke atas layar -->
+        <div id="reading-spacer" aria-hidden="true"></div>
     </main>
 
     <!-- Footer -->
@@ -405,6 +503,25 @@
                     toggle.setAttribute('aria-expanded', String(!open));
                     toggle.setAttribute('aria-label', open ? 'Buka menu' : 'Tutup menu');
                     menu.hidden = open;
+                    if (!open) {
+                        menu.style.display = 'block';
+                        menu.style.position = 'fixed';
+                        menu.style.zIndex = '1000';
+                        menu.style.inset = '74px 0 auto';
+                        menu.style.background = '#fff';
+                        menu.querySelectorAll('a').forEach(function (link, index) {
+                            link.style.display = 'block';
+                            link.style.padding = '13px 4px';
+                            if (index === 3) {
+                                link.style.marginTop = '14px';
+                                link.style.color = '#fff';
+                                link.style.textAlign = 'center';
+                                link.style.background = 'var(--teal,#3A9DA6)';
+                                link.style.border = '0';
+                                link.style.borderRadius = '9px';
+                            }
+                        });
+                    }
                     document.body.classList.toggle('menu-open', !open);
                 });
                 menu.addEventListener('click', function (e) {
@@ -415,37 +532,217 @@
                 });
             }
 
-            // Table of Contents spy
+            // ---------- Table of Contents ----------
             var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
-            var map = {};
-            var heads = {};
+            if (!links.length) return;
+
+            var spacer = document.getElementById('reading-spacer');
+            var mobileToc = document.querySelector('details.toc-mobile');
+            var currentLabel = document.querySelector('[data-toc-current]');
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            // id -> { el, links[], head, parent }
+            var entries = {};
+            var order = [];
+
             links.forEach(function (link) {
-                var id = link.getAttribute('href').slice(1);
-                var sec = document.getElementById(id);
-                if (sec) {
-                    map[id] = link;
-                    var head = sec.querySelector('h3, h4');
-                    if (head) {
-                        head.classList.add('sec-head');
-                        heads[id] = head;
-                    }
+                var id = (link.getAttribute('href') || '').slice(1);
+                var el = id && document.getElementById(id);
+                if (!el) return;
+                if (!entries[id]) {
+                    var head = el.querySelector('h3, h4');
+                    if (head) head.classList.add('sec-head');
+                    var parentSection = el.parentElement && el.parentElement.closest('section[id]');
+                    entries[id] = {
+                        el: el,
+                        links: [],
+                        head: head,
+                        label: head ? head.textContent.trim() : '',
+                        parent: parentSection && parentSection.id !== id ? parentSection.id : null
+                    };
+                    order.push(id);
                 }
+                entries[id].links.push(link);
             });
-            function setActive(id) {
-                links.forEach(function (l) { l.classList.remove('is-active'); });
-                Object.keys(heads).forEach(function (k) { heads[k].classList.remove('is-active'); });
-                if (map[id]) map[id].classList.add('is-active');
-                if (heads[id]) heads[id].classList.add('is-active');
+
+            // Urutkan sesuai posisi di dokumen supaya scroll-spy akurat
+            order.sort(function (a, b) {
+                var pos = entries[a].el.compareDocumentPosition(entries[b].el);
+                return pos & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+            });
+
+            function headerOffset() {
+                var header = document.querySelector('.site-header');
+                var h = header ? header.getBoundingClientRect().height : 74;
+                return Math.round(h + 16);
             }
-            if ('IntersectionObserver' in window) {
-                var observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) setActive(entry.target.id);
-                    });
-                }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-                Object.keys(map).forEach(function (id) {
-                    observer.observe(document.getElementById(id));
+
+            function topOf(el) {
+                return el.getBoundingClientRect().top + window.pageYOffset;
+            }
+
+            // Tambah ruang di bawah agar section terakhir bisa berhenti tepat di atas layar
+            function syncSpacer() {
+                if (!spacer) return;
+                spacer.style.height = '0px';
+                var last = entries[order[order.length - 1]].el;
+                var needed = (window.innerHeight - headerOffset()) -
+                    (document.documentElement.scrollHeight - topOf(last));
+                spacer.style.height = Math.max(0, Math.ceil(needed)) + 'px';
+            }
+
+            var activeId = null;
+            function setActive(id) {
+                if (id === activeId) return;
+                activeId = id;
+                links.forEach(function (l) { l.classList.remove('is-active', 'is-active-parent'); });
+                order.forEach(function (key) {
+                    if (entries[key].head) entries[key].head.classList.remove('is-active');
                 });
+                if (currentLabel) currentLabel.textContent = '';
+                if (!id || !entries[id]) return;
+
+                var entry = entries[id];
+                entry.links.forEach(function (l) {
+                    l.classList.add('is-active');
+                    l.setAttribute('aria-current', 'true');
+                });
+                if (entry.head) entry.head.classList.add('is-active');
+                // Sinkronkan active navbar (Beranda/Kebijakan/Hapus akun) dengan posisi TOC,
+                // karena klik TOC pakai replaceState yang tidak memicu hashchange.
+                (function syncNavbar(currentId) {
+                    var navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+                    if (!navLinks.length) return;
+                    navLinks.forEach(function (l) { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+                    var sel = currentId === 'cara-hapus-akun'
+                        ? 'a[href$="#cara-hapus-akun"]'
+                        : 'a[href="privacy-policy.html"]';
+                    document.querySelectorAll('.desktop-nav ' + sel + ', .mobile-nav ' + sel).forEach(function (t) {
+                        t.classList.add('active'); t.setAttribute('aria-current', 'page');
+                    });
+                })(id);
+                if (entry.parent && entries[entry.parent]) {
+                    entries[entry.parent].links.forEach(function (l) { l.classList.add('is-active-parent'); });
+                }
+                if (currentLabel) currentLabel.textContent = entry.label;
+                links.forEach(function (l) {
+                    if (!l.classList.contains('is-active')) l.removeAttribute('aria-current');
+                });
+            }
+
+            var lockUntil = 0;
+            var pendingFinal = null;
+            function updateActive() {
+                if (Date.now() < lockUntil) return;
+                var line = window.pageYOffset + headerOffset() + 4;
+                var atBottom = window.pageYOffset + window.innerHeight >=
+                    document.documentElement.scrollHeight - 2;
+                var found = null;
+                for (var i = 0; i < order.length; i++) {
+                    if (topOf(entries[order[i]].el) <= line) found = order[i];
+                }
+                setActive(atBottom ? order[order.length - 1] : found);
+            }
+
+            function focusEntry(entry) {
+                entry.el.setAttribute('tabindex', '-1');
+                try { entry.el.focus({ preventScroll: true }); } catch (err) { /* noop */ }
+            }
+
+            function goTo(id, focusTarget) {
+                var entry = entries[id];
+                if (!entry) return;
+                var top = Math.max(0, Math.round(topOf(entry.el) - headerOffset()));
+                var maxTop = document.documentElement.scrollHeight - window.innerHeight;
+                // Kunci scroll-spy sampai animasi smooth-scroll benar-benar selesai,
+                // kalau tidak updateActive di tengah jalan menimpa dot ke section perantara.
+                var distance = Math.abs(window.pageYOffset - Math.min(top, Math.max(0, maxTop)));
+                var wait = reduceMotion.matches ? 0 : Math.min(1500, Math.max(800, Math.round(distance / 2)));
+                lockUntil = Date.now() + wait + 250;
+                if (pendingFinal) { clearTimeout(pendingFinal); pendingFinal = null; }
+                window.scrollTo({
+                    top: Math.min(top, Math.max(0, maxTop)),
+                    behavior: reduceMotion.matches ? 'auto' : 'smooth'
+                });
+                // Highlight langsung, jangan tunggu scroll selesai
+                setActive(id);
+                try {
+                    if (history.replaceState) history.replaceState(null, '', '#' + id);
+                } catch (err) { /* file:// protocol */ }
+                if (wait === 0) {
+                    lockUntil = 0;
+                    if (focusTarget) focusEntry(entry);
+                    updateActive();
+                    if (activeId !== id) setActive(id);
+                    return;
+                }
+                function finish() {
+                    pendingFinal = null;
+                    lockUntil = 0;
+                    if (focusTarget) focusEntry(entry);
+                    updateActive();
+                    // Kalau hitungan posisi meleset karena rounding/header,
+                    // paksa kembali ke target yang diklik supaya dot tidak hilang.
+                    if (activeId !== id) setActive(id);
+                }
+                if ('onscrollend' in window) {
+                    var onEnd = function () {
+                        window.removeEventListener('scrollend', onEnd);
+                        if (pendingFinal) { clearTimeout(pendingFinal); finish(); }
+                    };
+                    window.addEventListener('scrollend', onEnd);
+                }
+                pendingFinal = setTimeout(finish, wait + 250);
+            }
+
+            links.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var id = (link.getAttribute('href') || '').slice(1);
+                    if (!entries[id]) return;
+                    e.preventDefault();
+                    var insideMobile = mobileToc && mobileToc.contains(link);
+                    if (insideMobile) {
+                        // Tutup dulu supaya tinggi halaman final sebelum menghitung posisi
+                        mobileToc.open = false;
+                        requestAnimationFrame(function () {
+                            syncSpacer();
+                            goTo(id, true);
+                        });
+                        return;
+                    }
+                    goTo(id, true);
+                });
+            });
+
+            var ticking = false;
+            function onScroll() {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(function () {
+                    ticking = false;
+                    updateActive();
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            // Kalau user menggulir sendiri, lepaskan kunci highlight dari klik terakhir
+            ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (evt) {
+                window.addEventListener(evt, function () { lockUntil = 0; }, { passive: true });
+            });
+            window.addEventListener('resize', function () { syncSpacer(); updateActive(); });
+            window.addEventListener('hashchange', function () {
+                var id = window.location.hash.slice(1);
+                if (entries[id]) goTo(id, false);
+            });
+            if (mobileToc) mobileToc.addEventListener('toggle', syncSpacer);
+            window.addEventListener('load', function () { syncSpacer(); updateActive(); });
+
+            syncSpacer();
+            var initial = window.location.hash.slice(1);
+            if (entries[initial]) {
+                requestAnimationFrame(function () { goTo(initial, false); });
+            } else {
+                updateActive();
             }
         })();
     </script>
@@ -456,10 +753,10 @@
             function syncActive(){
                 var hash=window.location.hash;
                 links.forEach(function(link){link.classList.remove('active');link.removeAttribute('aria-current')});
-                var target=hash==='#cara-hapus-akun'
-                    ? document.querySelector('.desktop-nav a[href$="#cara-hapus-akun"], .mobile-nav a[href$="#cara-hapus-akun"]')
-                    : document.querySelector('.desktop-nav a[href="privacy-policy.html"], .mobile-nav a[href="privacy-policy.html"]');
-                if(target){target.classList.add('active');target.setAttribute('aria-current','page')}
+                var sel=hash==='#cara-hapus-akun'
+                    ? '.desktop-nav a[href$="#cara-hapus-akun"], .mobile-nav a[href$="#cara-hapus-akun"]'
+                    : '.desktop-nav a[href="privacy-policy.html"], .mobile-nav a[href="privacy-policy.html"]';
+                document.querySelectorAll(sel).forEach(function(target){target.classList.add('active');target.setAttribute('aria-current','page')});
             }
             links.forEach(function(link){link.addEventListener('click',function(){if(link.href.indexOf('#cara-hapus-akun')!==-1)syncActive()})});
             window.addEventListener('hashchange',syncActive);
