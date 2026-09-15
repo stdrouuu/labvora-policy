@@ -1,430 +1,2273 @@
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kebijakan Privasi Labvora: cara kami mengumpulkan, menggunakan, menyimpan, dan menghapus data pribadi serta akun Anda.">
-    <link rel="icon" href="logo.png" type="image/png">
-    <meta property="og:title" content="Kebijakan Privasi & Penghapusan Akun Labvora">
-    <meta property="og:description" content="Cara kami mengumpulkan, menggunakan, menyimpan, dan menghapus data pribadi serta akun Anda di aplikasi Labvora.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="logofull.jpg">
-    <title>Kebijakan Privasi &amp; Penghapusan Akun Labvōra</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Labvōra membantu Anda memilih pemeriksaan, mengatur kunjungan, memantau sampel, dan menyimpan hasil laboratorium."
+    />
+    <meta name="theme-color" content="#3A9DA6" />
+    <meta
+      property="og:title"
+      content="Labvōra"
+    />
+    <meta
+      property="og:description"
+      content="Kelola perjalanan pemeriksaan laboratorium dalam satu aplikasi."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/logofull.jpg" />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Labvōra | Lab Test Application</title>
     <style>
+      :root {
+        --teal: #3A9DA6;
+        --teal-dark: #2a7d85;
+        --teal-soft: #dff2f1;
+        --pink: #fa6c8c;
+        --pink-soft: #ffe4eb;
+        --blue: #77a8eb;
+        --purple: #a39aeb;
+        --ink: #101828;
+        --body: #4b5565;
+        --muted: #77818f;
+        --line: #e4e8ec;
+        --soft: #f5f7f8;
+        --white: #fff;
+        --shadow: 0 20px 55px rgba(16, 24, 40, 0.12);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 82px;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+      body.menu-open::after {
+        content: "";
+        position: fixed;
+        z-index: 38;
+        inset: 74px 0 0;
+        background: rgba(8, 20, 24, 0.62);
+        pointer-events: auto;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      a {
+        font: inherit;
+      }
+      button {
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.12;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+      p {
+        text-wrap: pretty;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      :focus-visible {
+        outline: 3px solid rgba(250, 108, 140, 0.45);
+        outline-offset: 3px;
+      }
+      ::selection {
+        color: var(--ink);
+        background: var(--pink-soft);
+      }
+      .container {
+        width: min(1160px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+      .skip-link {
+        position: fixed;
+        z-index: 100;
+        top: 10px;
+        left: 14px;
+        padding: 10px 14px;
+        color: #fff;
+        background: var(--ink);
+        border-radius: 8px;
+        transform: translateY(-150%);
+      }
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+      .site-header {
+        position: sticky;
+        z-index: 40;
+        top: 0;
+        height: 74px;
+        background: rgba(255, 255, 255, 0.96);
+        border-bottom: 1px solid #edf0f2;
+        backdrop-filter: blur(12px);
+      }
+      .nav-row {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+      }
+      .brand img {
+        width: 162px;
+        height: 62px;
+        object-fit: contain;
+        object-position: left center;
+      }
+      .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-left: auto;
+      }
+      .desktop-nav a {
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+      .desktop-nav a:hover {
+        color: var(--teal);
+      }
+      .desktop-nav a.active,
+      .mobile-nav a.active {
+        color: var(--teal);
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 6px;
+      }
+      .nav-button {
+        display: inline-flex !important;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 18px;
+        color: #fff !important;
+        background: var(--teal) !important;
+        border-radius: 999px;
+        font-weight: 600 !important;
+        transition: background 0.2s ease;
+      }
+      .nav-button:hover {
+        background: var(--teal-dark) !important;
+      }
+      .menu-button {
+        display: none;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        cursor: pointer;
+      }
+      .menu-button span,
+      .menu-button span:before,
+      .menu-button span:after {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--teal);
+        transition: none;
+      }
+      .menu-button span {
+        position: relative;
+      }
+      .menu-button span:before,
+      .menu-button span:after {
+        content: "";
+        position: absolute;
+        left: 0;
+      }
+      .menu-button span:before { top: -7px; }
+      .menu-button span:after { top: 7px; }
+      .menu-button[aria-expanded="true"] span,
+      .menu-button[aria-expanded="true"] span:before,
+      .menu-button[aria-expanded="true"] span:after {
+        background: var(--teal);
+        transform: none;
+      }
+      .menu-backdrop {
+        display: none;
+        position: fixed;
+        z-index: 38;
+        inset: 74px 0 0;
+        background: rgba(8, 20, 24, 0.62);
+      }
+      .mobile-nav {
+        position: fixed;
+        z-index: 39;
+        inset: 74px 0 auto;
+        padding: 18px 24px 24px;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 18px 35px rgba(16, 24, 40, 0.1);
+      }
+      .mobile-nav a {
+        display: block;
+        padding: 13px 4px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 600;
+      }
+      @media (max-width: 760px) {
+        .mobile-nav {
+          position: fixed !important;
+          z-index: 1000 !important;
+          inset: 74px 0 auto !important;
+          display: block;
+          padding: 18px 24px 24px;
+          background: #fff !important;
+          border-bottom: 1px solid var(--line);
+          box-shadow: 0 18px 35px rgba(16, 24, 40, 0.1);
+        }
+        .mobile-nav[hidden] {
+          display: none !important;
+        }
+        .mobile-nav a {
+          display: block !important;
+          padding: 13px 4px;
+          border-bottom: 1px solid var(--line);
+          font-weight: 600;
+        }
+        .mobile-nav a:last-child {
+          margin-top: 14px;
+          color: #fff;
+          text-align: center;
+          background: var(--teal);
+          border: 0;
+          border-radius: 9px;
+        }
+      }
+      .mobile-nav a {
+        display: block;
+        padding: 13px 4px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 600;
+      }
+      .mobile-nav a:last-child {
+        margin-top: 14px;
+        color: #fff;
+        text-align: center;
+        background: #248C99;
+        border: 0;
+        border-radius: 9px;
+      }
+
+      .hero {
+        padding: 32px 0 106px;
+      }
+      .hero-shell {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .hero-copy,
+      .hero-showcase {
+        min-height: 600px;
+        border-radius: 26px;
+      }
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(38px, 5vw, 68px);
+        background: var(--soft);
+      }
+      .hero h1 {
+        max-width: 560px;
+        margin-bottom: 22px;
+        font-size: clamp(2.65rem, 5.2vw, 4.85rem);
+        font-weight: 700;
+      }
+      .hero h1 span {
+        color: var(--teal);
+      }
+      .hero-copy > p {
+        max-width: 54ch;
+        margin-bottom: 30px;
+        color: var(--body);
+        font-size: 1rem;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 48px;
+        padding: 0 20px;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        font-size: 0.9rem;
+        font-weight: 650;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          border 0.2s ease;
+      }
+      .button svg {
+        width: 18px;
+        height: 18px;
+      }
+      .button-primary {
+        color: #fff;
+        background: var(--teal);
+      }
+      .button-primary:hover {
+        background: var(--teal-dark);
+      }
+      .button-secondary {
+        color: var(--ink);
+        background: #fff;
+        border-color: #d5dbe0;
+      }
+      .button-secondary:hover {
+        color: var(--teal);
+        border-color: var(--teal);
+      }
+
+      .store-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 22px;
+      }
+      .play-badge {
+        display: inline-block;
+        line-height: 0;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(16, 24, 40, 0.14);
+        transition:
+          transform 0.2s var(--ease),
+          box-shadow 0.2s var(--ease);
+      }
+      .play-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(16, 24, 40, 0.22);
+      }
+      .play-badge img {
+        display: block;
+        height: 52px;
+        width: auto;
+        border-radius: 10px;
+      }
+      .store-note {
+        max-width: 155px;
+        color: var(--muted);
+        font-size: 0.72rem;
+        line-height: 1.4;
+      }
+      .cta-copy .store-row {
+        margin: 0;
+      }
+      .cta-copy .store-note {
+        color: #d5ecea;
+      }
+      @media (max-width: 760px) {
+        .cta-box {
+          display: flex;
+          flex-direction: column;
+        }
+        .cta-copy {
+          width: 100%;
+          position: static;
+          text-align: left;
+        }
+        .cta-copy p {
+          margin-inline: 0;
+        }
+        .cta-copy .actions {
+          justify-content: flex-start;
+        }
+        .cta-copy .store-row {
+          position: static;
+          width: 100%;
+          justify-content: flex-start;
+          margin: 20px 0 0;
+          transform: none;
+          white-space: normal;
+        }
+        .cta-devices {
+          width: 100%;
+          flex: 0 0 auto;
+        }
+      }
+
+      .hero-showcase {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        overflow: hidden;
+        background: var(--teal);
+      }
+      .hero-showcase:before {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        right: -140px;
+        top: -130px;
+        border: 72px solid rgba(255, 255, 255, 0.09);
+        border-radius: 50%;
+      }
+      .hero-showcase:after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        left: -72px;
+        bottom: -78px;
+        background: var(--pink);
+        border-radius: 50%;
+        opacity: 0.75;
+      }
+      .hero-device {
+        z-index: 3;
+        transform: translateY(10px) rotate(2deg);
+        transform-origin: center bottom;
+      }
+      .hero-showcase .device.hero-device {
+        width: 230px;
+        height: 497px;
+        border-radius: 38px 38px 25px 25px;
+      }
+      .hero-showcase .device.hero-device:before {
+        width: 9px;
+        height: 9px;
+      }
+      .hero-showcase .device.hero-device .device-screen {
+        border-radius: 31px 31px 18px 18px;
+      }
+      .hero-store {
+        position: relative;
+        z-index: 5;
+        width: fit-content;
+        max-width: calc(100% - 32px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 28px auto 0;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 14px;
+        backdrop-filter: blur(8px);
+      }
+      .hero-store .play-badge {
+        display: inline-block;
+        line-height: 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.2);
+        transition:
+          transform 0.2s var(--ease),
+          box-shadow 0.2s var(--ease);
+      }
+      .hero-store .play-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(16, 24, 40, 0.3);
+      }
+      .hero-store .play-badge img {
+        display: block;
+        height: 44px;
+        width: auto;
+        border-radius: 8px;
+      }
+      .hero-store .store-note {
+        max-width: 130px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.7rem;
+        line-height: 1.4;
+      }
+      .scroll-seal {
+        position: absolute;
+        z-index: 8;
+        left: 50%;
+        bottom: -43px;
+        width: 88px;
+        height: 88px;
+        display: grid;
+        place-items: center;
+        color: var(--teal);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        box-shadow: 0 10px 25px rgba(16, 24, 40, 0.08);
+        transform: translateX(-50%);
+      }
+      .scroll-seal span {
+        position: absolute;
+        inset: 8px;
+        border: 1px dashed #b7c5c8;
+        border-radius: 50%;
+      }
+      .scroll-seal svg {
+        width: 22px;
+        height: 22px;
+        color: #e77993;
+      }
+
+      .device {
+        position: relative;
+        width: 264px;
+        height: 570px;
+        padding: 7px;
+        background: #222c35;
+        border: 1px solid #4a535c;
+        border-radius: 29px;
+        box-shadow: var(--shadow);
+      }
+      .device:before {
+        content: "";
+        position: absolute;
+        z-index: 8;
+        top: 14px;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        background: #090d11;
+        border: 2px solid #424d57;
+        border-radius: 50%;
+        transform: translateX(-50%);
+      }
+      .device-screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #f8fbfa;
+        border-radius: 21px;
+      }
+      .screen-image {
+        position: absolute;
+        z-index: 7;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        background: #f8fbfa;
+      }
+      .fake-status {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 15px 0;
+        color: #27454a;
+        font-size: 8px;
+        font-weight: 700;
+      }
+      .fake-body {
+        padding: 9px 14px 58px;
+      }
+      .fake-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+      .fake-head small {
+        display: block;
+        color: #849296;
+        font-size: 8px;
+      }
+      .fake-head strong {
+        font-size: 14px;
+      }
+      .avatar {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        color: var(--teal-dark);
+        background: var(--teal-soft);
+        border-radius: 50%;
+        font-size: 9px;
+        font-weight: 700;
+      }
+      .fake-search {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        margin-bottom: 12px;
+        color: #8b979a;
+        background: #fff;
+        border: 1px solid #dbe6e5;
+        border-radius: 9px;
+        font-size: 8px;
+      }
+      .fake-card {
+        padding: 14px;
+        margin-bottom: 12px;
+        color: #fff;
+        background: var(--teal-dark);
+        border-radius: 12px;
+      }
+      .fake-card small {
+        color: #c7e8e5;
+        font-size: 7px;
+      }
+      .fake-card strong {
+        display: block;
+        max-width: 145px;
+        margin: 4px 0 10px;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+      .fake-card span {
+        font-size: 7px;
+      }
+      .fake-label {
+        margin: 12px 0 7px;
+        font-size: 8px;
+        font-weight: 700;
+      }
+      .fake-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .fake-action {
+        padding: 8px 2px;
+        text-align: center;
+        background: #fff;
+        border: 1px solid #dee8e7;
+        border-radius: 8px;
+        font-size: 6px;
+      }
+      .fake-action i {
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        margin: 0 auto 4px;
+        color: var(--teal);
+        background: var(--teal-soft);
+        border-radius: 7px;
+        font-style: normal;
+      }
+      .fake-progress {
+        padding: 9px;
+        background: #fff;
+        border: 1px solid #dce7e6;
+        border-radius: 9px;
+      }
+      .fake-progress b {
+        font-size: 7px;
+      }
+      .line {
+        height: 3px;
+        margin-top: 8px;
+        background: linear-gradient(90deg, var(--teal) 0 72%, #dbe6e5 72%);
+        border-radius: 4px;
+      }
+      .fake-nav {
+        position: absolute;
+        inset: auto 0 0;
+        height: 48px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #859597;
+        background: #fff;
+        border-top: 1px solid #e3ebea;
+        font-size: 6px;
+      }
+      .fake-nav b {
+        color: var(--teal);
+      }
+
+      .benefits {
+        padding: 0 0 108px;
+      }
+      .section-head {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 44px;
+      }
+      .section-head h2 {
+        margin-bottom: 13px;
+        font-size: clamp(2rem, 4vw, 3.25rem);
+      }
+      .section-head p {
+        color: var(--body);
+      }
+      .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .benefit-card {
+        position: relative;
+        z-index: 0;
+        isolation: isolate;
+        min-height: 235px;
+        padding: 28px 24px;
+        overflow: hidden;
+        border: 1px solid #edf0f2;
+        border-radius: 18px;
+        color: var(--ink);
+        background: #F5F7F8;
+        transition: transform 0.2s var(--ease);
+      }
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        right: -38px;
+        bottom: -42px;
+        width: 190px;
+        height: 190px;
+        background: url("assets/logo.png") center / contain no-repeat;
+        mix-blend-mode: multiply;
+        opacity: 0.1;
+        pointer-events: none;
+      }
+      .benefit-card > * {
+        position: relative;
+        z-index: 1;
+      }
+      .benefit-card:hover {
+        transform: translateY(-4px);
+      }
+      .benefit-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 26px;
+        background: #e77993;
+        border-radius: 50%;
+        color: #fff;
+      }
+      .benefit-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: #fff;
+        color: #fff;
+      }
+      .benefit-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+        letter-spacing: -0.02em;
+        color: #000;
+      }
+      .benefit-card p {
+        margin: 0;
+        color: #000;
+        font-size: 0.82rem;
+        line-height: 1.55;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .benefit-card {
+          transition: none;
+        }
+      }
+
+      .workflow {
+        padding: 100px 0;
+        background: var(--soft);
+      }
+      .workflow-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        align-items: center;
+        gap: clamp(55px, 8vw, 105px);
+      }
+      .screen-collage {
+        position: relative;
+        min-height: 540px;
+        overflow: hidden;
+        background: transparent;
+        border-radius: 24px;
+      }
+      .screen-collage:before {
+        display: none;
+      }
+      .mini-device {
+        position: absolute;
+        width: 178px;
+        height: 383px;
+        padding: 5px;
+        border-radius: 21px;
+        box-shadow: 0 18px 35px rgba(16, 24, 40, 0.15);
+      }
+      .mini-device:before {
+        top: 10px;
+        width: 7px;
+        height: 7px;
+        border-width: 1px;
+      }
+      .mini-device .device-screen {
+        border-radius: 15px;
+      }
+      .mini-device .fake-status {
+        height: 25px;
+        padding: 5px 10px 0;
+        font-size: 6px;
+      }
+      .mini-device .fake-body {
+        padding: 6px 9px 34px;
+      }
+      .mini-device .fake-head {
+        margin-bottom: 7px;
+      }
+      .mini-device .fake-head strong {
+        font-size: 9px;
+      }
+      .mini-device .avatar {
+        width: 20px;
+        height: 20px;
+        font-size: 6px;
+      }
+      .mini-device .fake-search {
+        height: 24px;
+        margin-bottom: 7px;
+        padding: 0 7px;
+        font-size: 5px;
+      }
+      .mini-device .fake-card {
+        padding: 9px;
+        margin-bottom: 7px;
+        border-radius: 8px;
+      }
+      .mini-device .fake-card strong {
+        font-size: 8px;
+      }
+      .mini-device .fake-label {
+        margin: 7px 0 4px;
+        font-size: 5px;
+      }
+      .mini-device .fake-actions {
+        gap: 3px;
+      }
+      .mini-device .fake-action {
+        padding: 5px 1px;
+        font-size: 4px;
+      }
+      .mini-device .fake-action i {
+        width: 15px;
+        height: 15px;
+        margin-bottom: 2px;
+      }
+      .mini-device .fake-nav {
+        height: 32px;
+        font-size: 4px;
+      }
+      .device-a {
+        z-index: 3;
+        left: 42px;
+        top: 78px;
+        transform: rotate(-13deg);
+      }
+      .device-b {
+        z-index: 4;
+        left: 50%;
+        top: 48px;
+        transform: translateX(-50%) rotate(-2deg);
+      }
+      .device-c {
+        z-index: 2;
+        right: 34px;
+        top: 92px;
+        transform: rotate(12deg);
+      }
+      .workflow-copy h2 {
+        margin-bottom: 14px;
+        font-size: clamp(2.2rem, 4vw, 3.65rem);
+      }
+      .workflow-copy > p {
+        margin-bottom: 34px;
+        color: var(--body);
+      }
+      .steps {
+        display: grid;
+        gap: 20px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 15px;
+      }
+      .step-number {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: var(--teal);
+        border-radius: 8px;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .step:nth-child(2) .step-number {
+        background: var(--teal);
+      }
+      .step h3 {
+        margin: 2px 0 5px;
+        font-size: 0.98rem;
+        letter-spacing: -0.015em;
+      }
+      .step p {
+        margin: 0;
+        color: var(--body);
+        font-size: 0.84rem;
+      }
+
+      .cta {
+        padding: 82px 0;
+      }
+      .cta-box {
+        position: relative;
+        min-height: 450px;
+        display: grid;
+        grid-template-columns: 1fr 0.9fr;
+        align-items: center;
+        gap: 30px;
+        padding: clamp(38px, 6vw, 70px);
+        overflow: hidden;
+        color: #fff;
+        background: var(--teal);
+        border-radius: 22px;
+      }
+      .cta-box:before {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        right: -90px;
+        top: -105px;
+        border: 55px solid rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+      }
+      .cta-copy {
+        position: relative;
+        z-index: 4;
+      }
+      .cta-copy h2 {
+        max-width: 650px;
+        margin-bottom: 17px;
+        font-size: clamp(2.2rem, 4.2vw, 4rem);
+      }
+      .cta-copy p {
+        max-width: 50ch;
+        margin-bottom: 27px;
+        color: #d8f0ee;
+      }
+      .cta-box .button-primary {
+        color: var(--teal-dark);
+        background: #fff;
+      }
+      .cta-box .button-secondary {
+        color: #fff;
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.55);
+      }
+      .cta-devices {
+        position: relative;
+        z-index: 3;
+        min-height: 420px;
+      }
+      .cta-device {
+        position: absolute;
+        width: 205px;
+        height: 441px;
+        padding: 6px;
+        border-radius: 24px;
+        box-shadow: 0 22px 45px rgba(5, 49, 55, 0.28);
+      }
+      .cta-device:before {
+        top: 12px;
+        width: 8px;
+        height: 8px;
+        border-width: 1.5px;
+      }
+      .cta-device .device-screen {
+        border-radius: 18px;
+      }
+      .cta-device .fake-status {
+        height: 28px;
+        font-size: 7px;
+        padding: 6px 12px 0;
+      }
+      .cta-device .fake-body {
+        padding: 6px 11px 40px;
+      }
+      .cta-device .fake-head {
+        margin-bottom: 9px;
+      }
+      .cta-device .fake-head small {
+        font-size: 7px;
+      }
+      .cta-device .fake-head strong {
+        font-size: 11px;
+      }
+      .cta-device .avatar {
+        width: 24px;
+        height: 24px;
+        font-size: 7px;
+      }
+      .cta-device .fake-search {
+        height: 28px;
+        margin-bottom: 9px;
+        font-size: 7px;
+        padding: 0 8px;
+        border-radius: 7px;
+      }
+      .cta-device .fake-card {
+        padding: 11px;
+        margin-bottom: 9px;
+        border-radius: 9px;
+      }
+      .cta-device .fake-card small {
+        font-size: 6px;
+      }
+      .cta-device .fake-card strong {
+        font-size: 10px;
+        margin: 3px 0 6px;
+      }
+      .cta-device .fake-card span {
+        font-size: 6px;
+      }
+      .cta-device .fake-label {
+        font-size: 7px;
+        margin: 8px 0 4px;
+        font-weight: 700;
+      }
+      .cta-device .fake-actions {
+        gap: 4px;
+      }
+      .cta-device .fake-action {
+        font-size: 5px;
+        padding: 6px 1px;
+        border-radius: 6px;
+      }
+      .cta-device .fake-action i {
+        width: 18px;
+        height: 18px;
+        margin: 0 auto 3px;
+        font-size: 8px;
+      }
+      .cta-device .fake-progress {
+        padding: 7px;
+        border-radius: 7px;
+      }
+      .cta-device .fake-progress b {
+        font-size: 6px;
+      }
+      .cta-device .fake-nav {
+        height: 38px;
+        font-size: 6px;
+      }
+      .cta-one {
+        left: 6%;
+        top: -10px;
+        transform: rotate(-7deg);
+      }
+      .cta-two {
+        right: 4%;
+        top: -30px;
+        transform: rotate(7deg);
+      }
+
+      .site-footer {
+        position: relative;
+        min-height: 355px;
+        padding: 58px 0 28px;
+        overflow: hidden;
+        background: #fff;
+        border-top: 1px solid var(--line);
+        isolation: isolate;
+      }
+      .site-footer .container {
+        position: relative;
+        z-index: 2;
+      }
+      .footer-main {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 70px;
+        padding-bottom: 42px;
+      }
+      .footer-logo {
+        width: 235px;
+        height: 112px;
+        margin: -25px 0 -14px;
+        object-fit: contain;
+        object-position: left center;
+      }
+      .footer-copy {
+        max-width: 430px;
+        color: var(--body);
+        font-size: 0.9rem;
+      }
+      .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 35px;
+        align-content: center;
+      }
+      .footer-links a {
+        color: #4e5968;
+        font-size: 0.88rem;
+      }
+      .footer-links a:hover {
+        color: var(--teal);
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 22px;
+        color: #9aa2ae;
+        border-top: 1px solid var(--line);
+        font-size: 0.76rem;
+      }
+      .footer-watermark {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .footer-watermark img {
+        width: 125%;
+        max-width: none;
+        opacity: 0.055;
+        transform: translate(-5%, 38%);
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+      .js .reveal {
+        opacity: 0.01;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s var(--ease),
+          transform 0.6s var(--ease);
+      }
+      .js .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 980px) {
+        .hero-copy,
+        .hero-showcase {
+          min-height: 560px;
+        }
+        .benefit-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .benefit-card {
+          min-height: 210px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .benefit-card .benefit-icon {
+          flex: 0 0 auto;
+        }
+        .benefit-card h3,
+        .benefit-card p {
+          width: 100%;
+          text-align: center;
+        }
+        .workflow-grid {
+          grid-template-columns: 1fr;
+          gap: 55px;
+        }
+        .screen-collage {
+          max-width: 620px;
+          width: 100%;
+          margin: auto;
+        }
+        .cta-box {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cta-one {
+          left: 2%;
+        }
+        .cta-two {
+          right: 0;
+        }
+      }
+      @media (max-width: 760px) {
+        .container {
+          width: min(100% - 30px, 650px);
+        }
+        .desktop-nav {
+          display: none;
+        }
+        .benefit-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .benefit-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .benefit-card .benefit-icon {
+          flex: 0 0 auto;
+        }
+        .hero {
+          padding-top: 20px;
+        }
+        .hero-shell {
+          grid-template-columns: 1fr;
+        }
+        .hero-copy,
+        .hero-showcase {
+          min-height: auto;
+        }
+        .hero-copy {
+          padding: 45px 30px;
+        }
+        .hero-showcase {
+          min-height: 590px;
+        }
+        .scroll-seal {
+          display: none;
+        }
+        .benefits {
+          padding: 20px 0 78px;
+        }
+        .workflow {
+          padding: 76px 0;
+        }
+        .cta {
+          padding: 58px 0;
+        }
+        .cta-box {
+          grid-template-columns: 1fr;
+          min-height: 760px;
+        }
+        .cta-copy {
+          text-align: center;
+          position: static;
+        }
+        .cta-copy p {
+          margin-inline: auto;
+        }
+        .cta-copy .actions {
+          justify-content: center;
+        }
+        .cta-devices {
+          min-height: 400px;
+        }
+        .cta-device {
+          width: 175px;
+          height: 374px;
+        }
+        .cta-one {
+          left: 12%;
+        }
+        .cta-two {
+          right: 10%;
+        }
+        .footer-main {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          padding-bottom: 24px;
+        }
+        .footer-logo {
+          width: 180px;
+          height: 86px;
+          margin: -18px 0 -10px;
+        }
+        .site-footer {
+          min-height: auto;
+          padding: 42px 0 24px;
+        }
+      }
+      @media (max-width: 500px) {
+        .store-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .cta-copy .store-row {
+          align-items: flex-start;
+        }
+        .container {
+          width: min(100% - 22px, 460px);
+        }
+        .brand img {
+          width: 140px;
+          height: 56px;
+        }
+        .hero-copy {
+          padding: 38px 24px;
+        }
+        .hero-copy,
+        .hero-showcase {
+          border-radius: 18px;
+        }
+        .hero h1 {
+          font-size: 2.65rem;
+        }
+        .actions {
+          flex-direction: column;
+        }
+        .actions .button {
+          width: 100%;
+        }
+        .hero-showcase {
+          min-height: 580px;
+        }
+        .hero-showcase .device.hero-device {
+          width: 195px;
+          height: 421px;
+        }
+        .hero-device {
+          transform: translateY(10px) rotate(2deg);
+        }
+        .benefit-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .benefit-card {
+          min-height: 190px;
+        }
+        .section-head {
+          margin-bottom: 32px;
+        }
+        .screen-collage {
+          min-height: 450px;
+        }
+        .mini-device {
+          width: 140px;
+          height: 299px;
+        }
+        .device-a {
+          left: 17px;
+          top: 72px;
+        }
+        .device-b {
+          top: 43px;
+        }
+        .device-c {
+          right: 12px;
+          top: 79px;
+        }
+        .workflow-copy h2 {
+          font-size: 2.35rem;
+        }
+        .cta-box {
+          min-height: 700px;
+          padding: 42px 22px;
+          border-radius: 17px;
+        }
+        .cta-copy h2 {
+          font-size: 2.35rem;
+        }
+        .cta-device {
+          width: 145px;
+          height: 308px;
+        }
+        .cta-one {
+          left: 5%;
+          top: 15px;
+        }
+        .cta-two {
+          right: 3%;
+          top: 0;
+        }
+        .footer-links {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 7px;
+        }
+        .footer-watermark img {
+          width: 115%;
+          opacity: 0.035;
+          transform: translate(-7%, 55%);
+        }
+      }
+      @media (max-width: 500px) {
+        .benefit-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
         html {
-            scroll-padding-top: 96px;
+          scroll-behavior: auto;
         }
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #111827;
-            background-color: #ffffff;
-            -webkit-font-smoothing: antialiased;
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
         }
-        .toc-link {
-            position: relative;
+        .js .reveal {
+          opacity: 1;
+          transform: none;
         }
-        .toc-link::before {
-            content: "";
-            position: absolute;
-            top: 2px;
-            bottom: 2px;
-            width: 2px;
-            border-radius: 2px;
-            background: #15808d;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        #toc > div > .toc-link::before {
-            left: -17px;
-        }
-        #toc .ml-3 .toc-link::before {
-            left: -13px;
-        }
-        .toc-link.is-active {
-            color: #15808d;
-            font-weight: 700;
-        }
-        .toc-link.is-active::before {
-            opacity: 1;
-        }
-        .sec-head {
-            position: relative;
-        }
-        .sec-head::after {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 9999px;
-            background: #f65d83;
-            margin-left: 8px;
-            vertical-align: middle;
-            transform: scale(0);
-            transition: transform 0.2s ease;
-        }
-        .sec-head.is-active::after {
-            transform: scale(1);
-        }
-        details.toc-mobile > summary {
-            list-style: none;
-        }
-        details.toc-mobile > summary::-webkit-details-marker {
-            display: none;
-        }
-        details.toc-mobile > summary::after {
-            content: "";
-            flex: none;
-            width: 8px;
-            height: 8px;
-            border-right: 2px solid #374151;
-            border-bottom: 2px solid #374151;
-            transform: rotate(45deg) translate(-1px, -1px);
-            transition: transform 0.2s ease;
-        }
-        details.toc-mobile[open] > summary::after {
-            transform: rotate(225deg) translate(-1px, -1px);
-        }
+      }
     </style>
-</head>
-<body class="bg-white text-gray-900 antialiased selection:bg-gray-200">
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <style>
+      @media (max-width: 980px) {
+        .benefit-card {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .benefit-card .benefit-icon {
+          margin-inline: auto !important;
+          align-self: center !important;
+        }
+        .benefit-card h3,
+        .benefit-card p {
+          width: 100% !important;
+          text-align: center !important;
+        }
+      @media (max-width: 760px) {
+        .desktop-nav {
+          display: none !important;
+        }
+        .menu-button {
+          display: flex !important;
+        }
+      }
+    </style>
+    <style>
+        .mobile-nav a[href*="cara-hapus-akun"] {
+          display: block !important;
+          margin-top: 0 !important;
+          color: var(--ink) !important;
+          text-align: left !important;
+          background: transparent !important;
+          border: 0 !important;
+          border-bottom: 1px solid var(--line) !important;
+          border-radius: 0 !important;
+        }
 
-    <!-- Navbar -->
-    <header class="sticky top-0 z-30 bg-white border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
-            <a href="#atas" class="flex items-center gap-2 sm:gap-3 min-w-0">
-                <img src="logo.png" alt="Labvora" class="h-11 w-11 object-contain flex-none">
-                <span class="text-gray-200 font-light select-none">|</span>
-                <span class="text-xs sm:text-sm text-gray-500 truncate">Kebijakan Privasi</span>
-            </a>
-            <div class="flex items-center gap-3 sm:gap-6 flex-none">
-                <a href="#cara-hapus-akun" class="text-xs sm:text-sm text-gray-700 hover:text-black transition whitespace-nowrap">Cara hapus akun</a>
-                <a href="mailto:labvora@ifukrida.net" class="text-xs sm:text-sm font-semibold text-white bg-[#15808d] hover:bg-[#0f6e7a] transition rounded-full px-3 py-1.5 sm:px-5 sm:py-2 active:scale-[0.98] whitespace-nowrap">Hubungi kami</a>
-            </div>
-        </div>
-    </header>
+          width: min(100%, 360px);
+          justify-content: center;
+          gap: 14px;
+          margin: 30px auto 0;
+          padding: 16px;
+        }
+        .hero-store .play-badge img {
+          height: 52px;
+        }
+        .hero-store .store-note {
+          max-width: 145px;
+        }
+        .cta-copy .store-row {
+          width: 100%;
+          justify-content: flex-start;
+          gap: 14px;
+        }
+        .cta-copy .play-badge img {
+          height: 52px;
+        }
+      }
+    </style>
+    <style>
+      @media (max-width: 760px) {
+        .cta-copy {
+          text-align: left !important;
+        }
+        .cta-copy .store-row {
+          position: static !important;
+          left: auto !important;
+          width: 100% !important;
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
+          margin: 20px 0 0 !important;
+          transform: none !important;
+          white-space: normal !important;
+        }
+        .cta-copy .store-row .play-badge {
+          margin-left: 0 !important;
+        }
+      }
+    </style>
+    <style>
+      /* Hero phone: badge above; only the upper half of the Android mockup is visible. */
+      .hero-showcase {
+        min-height: 600px;
+        height: 600px;
+        align-self: stretch;
+        display: block;
+        overflow: hidden;
+      }
+      .hero-showcase .hero-store {
+        position: absolute;
+        z-index: 6;
+        top: 74px;
+        left: 50%;
+        width: min(360px, calc(100% - 32px));
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin: 0;
+        transform: translateX(-50%);
+      }
+      .hero-showcase .hero-store .hero-store-arrow {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 86px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+        border-top: 9px solid #fff;
+        filter: drop-shadow(0 1px 2px rgba(10, 47, 52, 0.22));
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      .hero-showcase .hero-store .store-note {
+        flex: 1 1 auto;
+        max-width: none;
+      }
+      .hero-showcase .hero-store .play-badge {
+        flex: 0 0 175px;
+      }
+      .hero-showcase .hero-store .play-badge img {
+        width: 175px;
+        height: 52px;
+        max-width: none;
+        object-fit: contain;
+      }
+      .hero-showcase .device.hero-device {
+        width: 390px;
+        height: 843px;
+      }
+      .hero-showcase .hero-device {
+        position: absolute;
+        z-index: 4;
+        top: 190px;
+        left: 50%;
+        margin: 0;
+        transform: translateX(-50%);
+      }
+      @media (max-width: 760px) {
+        .hero-showcase {
+          min-height: 480px;
+          height: 480px;
+        }
+        .hero-showcase .hero-store {
+          top: 38px;
+        }
+        .hero-showcase .hero-store .hero-store-arrow {
+          display: block;
+          top: 86px;
+        }
+        .hero-showcase .hero-device {
+          top: 150px;
+        }
+        .hero-showcase .device.hero-device {
+          width: 320px;
+          height: 692px;
+        }
+      }
+      @media (max-width: 500px) {
+        .hero-showcase {
+          min-height: 430px;
+          height: 430px;
+        }
+        .hero-showcase .hero-store {
+          top: 26px;
+        }
+        .hero-showcase .hero-store .hero-store-arrow {
+          display: block;
+          top: 86px;
+        }
+        .hero-showcase .hero-device {
+          top: 136px;
+        }
+        .hero-showcase .device.hero-device {
+          width: 290px;
+          height: 627px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="index.html">Lewati ke konten</a>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M5 12h14m-5-6 6 6-6 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24" fill="none">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+        <path
+          d="m16 16 4 4"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="4"
+          y="6"
+          width="16"
+          height="14"
+          rx="3"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path d="M8 3v5m8-5v5M4 10h16" stroke="currentColor" stroke-width="2" />
+      </symbol>
+      <symbol id="icon-video" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="3"
+          y="6"
+          width="13"
+          height="12"
+          rx="3"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path
+          d="m16 10 5-3v10l-5-3"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="icon-file" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M6 3h8l4 4v14H6z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M14 3v5h4M9 13h6m-6 4h4"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </symbol>
+      <symbol id="icon-tube" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M8 3h8M9 3v6l-4 7a3 3 0 0 0 3 5h8a3 3 0 0 0 3-5l-4-7V3"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path d="M7 14h10" stroke="currentColor" stroke-width="2" />
+      </symbol>
+      <symbol id="icon-pin" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <circle cx="12" cy="10" r="2" stroke="currentColor" stroke-width="2" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6z"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path
+          d="m9 12 2 2 4-5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </symbol>
+    </svg>
 
-    <!-- Top Header -->
-    <header id="atas" class="max-w-6xl mx-auto px-6 pt-10 pb-6 border-b border-gray-100">
-        <h1 class="text-3xl font-bold text-black tracking-tight">Kebijakan Privasi &amp; Penghapusan Akun Labvōra</h1>
-        <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: 10 September 2026</p>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-6 pt-2 pb-8">
-        <!-- Logo Overlay Banner -->
-         <div class="relative flex justify-center items-center pt-2 pb-4 mb-4 overflow-hidden">
-        <img src="horiz.png" alt="Labvora by Cinta Kasih" class="block mx-auto w-full max-w-3xl h-auto object-contain relative z-10 -translate-x-[1%]" />
-    </div>
-
-        <!-- Breadcrumbs -->
-        <nav class="flex items-center gap-2 text-xs text-gray-400 mb-8">
-            <span>Beranda</span>
-            <span>&rsaquo;</span>
-            <span>Informasi</span>
-            <span>&rsaquo;</span>
-            <span class="text-gray-800 font-medium">Kebijakan Privasi</span>
+    <header class="site-header">
+      <div class="container nav-row">
+        <a class="brand" href="index.html" aria-label="Labvōra, kembali ke atas"
+          ><img
+            src="assets/horiz.png"
+            alt="Labvōra by Cinta Kasih"
+            width="152"
+            height="58"
+        /></a>
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+          <a class="active" href="index.html">Beranda</a
+          ><a href="privacy-policy.html">Kebijakan Privasi</a
+          ><a href="privacy-policy.html#cara-hapus-akun">Hapus akun</a
+          ><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
         </nav>
+        <button
+          class="menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Buka menu"
+        >
+          <span></span>
+        </button>
+      </div>
+      <nav
+        class="mobile-nav"
+        id="mobile-menu"
+        aria-label="Navigasi seluler"
+        hidden
+        style="position:fixed;z-index:39;inset:74px 0 auto;padding:18px 24px 24px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 18px 35px rgba(16,24,40,.1);"
+      >
+        <a class="active" href="index.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;">Beranda</a
+        ><a href="privacy-policy.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;">Kebijakan Privasi</a
+        ><a href="privacy-policy.html#cara-hapus-akun" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;">Hapus akun</a
+        ><a href="mailto:brandon.412024022@civitas.ukrida.ac.id" style="display:block;margin-top:14px;padding:13px 4px;color:#fff;text-align:center;background:var(--teal);border:0;border-radius:9px;font-weight:600;">Hubungi Kami</a>
+      </nav>
+      <div class="menu-backdrop" aria-hidden="true"></div>
+    </header>
 
-        <!-- Mobile Table of Contents -->
-        <details class="toc-mobile lg:hidden mb-6 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
-            <summary class="cursor-pointer font-bold text-gray-800 flex items-center justify-between gap-3">Daftar isi</summary>
-            <nav class="mt-3 space-y-2 text-gray-600">
-                <a href="#pendahuluan" class="block hover:text-black">1. Pendahuluan</a>
-                <a href="#informasi-dikumpulkan" class="block hover:text-black">2. Informasi yang Kami Kumpulkan</a>
-                <a href="#tujuan-penggunaan" class="block hover:text-black">3. Tujuan Penggunaan Informasi</a>
-                <a href="#keamanan-data" class="block hover:text-black">4. Penyimpanan &amp; Keamanan Data</a>
-                <a href="#pembagian-data" class="block hover:text-black">5. Pembagian Data ke Pihak Ketiga</a>
-                <a href="#hak-pengguna" class="block hover:text-black">6. Hak Pengguna &amp; Penghapusan Akun</a>
-                <a href="#cara-hapus-akun" class="block pl-3 hover:text-black">6.1. Cara Menghapus Akun</a>
-                <a href="#hapus-web" class="block pl-3 hover:text-black">6.5. Permintaan Hapus via Web</a>
-                <a href="#persetujuan" class="block hover:text-black">7. Persetujuan Kebijakan</a>
-                <a href="#anak" class="block hover:text-black">8. Anak &amp; Batas Usia</a>
-                <a href="#perubahan" class="block hover:text-black">9. Perubahan Kebijakan</a>
-            </nav>
-        </details>
-
-        <!-- Two Column Layout matching image -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            <!-- Left Column: Article Body (8 cols) -->
-            <article class="lg:col-span-8 space-y-8 text-gray-700 text-sm leading-relaxed">
-                
-                <!-- Main Header inside article -->
-                <div>
-                    <h2 class="text-3xl font-bold text-black tracking-tight mb-4">Kebijakan Privasi</h2>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        Di aplikasi Labvōra ("kami"), kami sangat menghargai privasi Anda dan berkomitmen untuk melindungi informasi pribadi Anda. Kebijakan Privasi ini menjelaskan praktik kami mengenai pengumpulan, penggunaan, penyimpanan, dan perlindungan data Anda saat mengakses aplikasi dan layanan laboratorium medis kami. Pengendali data untuk aplikasi ini adalah Labvōra. Untuk pertanyaan privasi atau penghapusan data, hubungi <a href="mailto:labvora@ifukrida.net" class="text-[#15808d] underline font-medium">labvora@ifukrida.net</a>. Mohon baca dokumen ini dengan seksama untuk memahami bagaimana kami mengelola informasi Anda.
-                    </p>
+    <main id="konten">
+      <section class="hero" id="atas">
+        <div class="container hero-shell">
+          <div class="hero-copy reveal">
+            <h1>Pesan tes lab dengan <span>Labvōra !</span></h1>
+            <p>
+              Pilih pemeriksaan, jadwalkan ke klinik, pantau sampel, dan akses
+              hasil dalam satu aplikasi.
+            </p>
+            <div class="actions">
+              <a class="button button-primary" href="index.html"
+                >Lihat cara kerja
+                <svg aria-hidden="true"><use href="#icon-arrow" /></svg></a
+              ><a class="button button-secondary" href="mailto:brandon.412024022@civitas.ukrida.ac.id"
+                >Hubungi kami</a
+              >
+            </div>
+          </div>
+          <div
+            class="hero-showcase reveal"
+            aria-label="Pratinjau aplikasi Labvōra pada ponsel Android"
+          >
+            <div class="device hero-device">
+              <div class="device-screen">
+                <img
+                  class="screen-image"
+                  src="assets/home.jpeg"
+                  alt="Tangkapan layar Beranda Labvōra"
+                  data-screen-image
+                  hidden
+                />
+                <div class="fake-status"><b>09.41</b><span>● ▰</span></div>
+                <div class="fake-body">
+                  <div class="fake-head">
+                    <div>
+                      <small>Selamat pagi,</small><strong>Alya Putri</strong>
+                    </div>
+                    <span class="avatar">AP</span>
+                  </div>
+                  <div class="fake-search">Cari tes atau paket pemeriksaan</div>
+                  <div class="fake-card">
+                    <small>Jadwal berikutnya · Besok</small
+                    ><strong>Pemeriksaan darah lengkap</strong
+                    ><span>09.30 WIB · Klinik Mitra Resmi</span>
+                  </div>
+                  <div class="fake-label">Mau apa hari ini?</div>
+                  <div class="fake-actions">
+                    <div class="fake-action"><i>⌕</i>Cari tes</div>
+                    <div class="fake-action"><i>□</i>Buat janji</div>
+                    <div class="fake-action"><i>✓</i>Lihat hasil</div>
+                  </div>
+                  <div class="fake-label">Proses pemeriksaan</div>
+                  <div class="fake-progress">
+                    <b>Sampel sedang dianalisis</b>
+                    <div class="line"></div>
+                  </div>
                 </div>
-
-                <!-- 1. Pendahuluan -->
-                <section id="pendahuluan" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">1. Pendahuluan</h3>
-                    <p>
-                        Selamat datang di aplikasi Labvōra. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi pengguna saat mendaftar dan menggunakan layanan pemesanan tes laboratorium. Kami menyarankan Anda untuk membaca dokumen ini secara seksama agar memahami bagaimana informasi Anda dikelola.
-                    </p>
-                </section>
-
-                <!-- 2. Informasi yang Kami Kumpulkan -->
-                <section id="informasi-dikumpulkan" class="scroll-mt-24 space-y-4 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">2. Informasi yang Kami Kumpulkan</h3>
-                    <p>
-                        Saat Anda membuat akun dan menggunakan aplikasi Labvōra, kami mengumpulkan beberapa data pribadi yang Anda berikan secara sadar, antara lain:
-                    </p>
-
-                    <!-- 2.1 Personal Data -->
-                    <div id="data-diri" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">2.1. Identitas &amp; Data Diri</h4>
-                        <p>
-                            Kami mengumpulkan Nama Lengkap, Username, Jenis Kelamin, Tanggal Lahir, Alamat Email, Nomor Telepon (+62), serta Alamat Tempat Tinggal lengkap Anda untuk keperluan administrasi klinik.
-                        </p>
-                    </div>
-
-                    <!-- 2.2 Medical & Credentials -->
-                    <div id="data-kesehatan" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">2.2. Data Kesehatan &amp; Kredensial</h4>
-                        <p>
-                            Meliputi riwayat pemesanan tes lab, hasil pemeriksaan laboratorium, serta kata sandi (password) dan token otentikasi.
-                        </p>
-                    </div>
-
-                    <!-- 2.3 Automatic & Permissions -->
-                    <div id="data-otomatis" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">2.3. Data Otomatis &amp; Izin Perangkat</h4>
-                        <p>
-                            Aplikasi tidak meminta izin lokasi, kamera, galeri, atau kontak. Data teknis minimal seperti versi aplikasi dan log kesalahan dapat tercatat untuk perbaikan layanan. Jika izin baru ditambahkan di versi mendatang, kebijakan ini diperbarui terlebih dahulu.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- 3. Tujuan Penggunaan Informasi -->
-                <section id="tujuan-penggunaan" class="scroll-mt-24 space-y-4 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">3. Tujuan Penggunaan Informasi</h3>
-                    <p>
-                        Data pribadi yang kami kumpulkan digunakan secara khusus untuk keperluan operasional dan pelayanan kesehatan Anda:
-                    </p>
-                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
-                        <li>Memproses pendaftaran dan verifikasi otentikasi akun pengguna.</li>
-                        <li>Mengatur dan mengonfirmasi jadwal janji temu pemeriksaan laboratorium di klinik mitra.</li>
-                        <li>Menampilkan riwayat serta sertifikat hasil pemeriksaan medis secara pribadi dan aman.</li>
-                        <li>Menampilkan status pesanan di aplikasi, termasuk pembatalan oleh pihak klinik dan pembaruan status pemeriksaan tes.</li>
-                    </ul>
-                </section>
-
-                <!-- 4. Penyimpanan & Keamanan Data -->
-                <section id="keamanan-data" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">4. Penyimpanan &amp; Keamanan Data</h3>
-                    <p>
-                        Data Anda disimpan dalam basis data aplikasi dan hanya diakses untuk keperluan operasional. Kami membatasi akses terhadap data tersebut dan berupaya mencegah akses tidak sah. Tidak ada sistem yang sepenuhnya aman, jadi segera hubungi kami jika ada aktivitas mencurigakan pada akun Anda.
-                    </p>
-                </section>
-
-                <!-- 5. Pembagian Data ke Pihak Ketiga -->
-                <section id="pembagian-data" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">5. Pembagian Data ke Pihak Ketiga</h3>
-                    <p>
-                        Labvōra <strong>TIDAK AKAN PERNAH</strong> menjual, menyewakan, atau membagikan data pribadi Anda kepada pihak ketiga untuk kepentingan komersial atau iklan. Data Anda hanya dibagikan secara terbatas untuk operasional berikut: klinik mitra resmi tempat Anda mendaftar pemeriksaan, serta penyedia infrastruktur aplikasi (hosting basis data dan layanan otentikasi) yang hanya memproses data sesuai instruksi kami.
-                    </p>
-                </section>
-
-                <!-- 6. Hak Pengguna & Kebijakan Penghapusan Akun -->
-                <section id="hak-pengguna" class="scroll-mt-24 space-y-4 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">6. Hak Pengguna &amp; Kebijakan Penghapusan Akun</h3>
-                    <p>
-                        Kendali atas akun dan data pribadi Anda adalah prioritas utama kami. Sebagai pemilik data pribadi, Anda memiliki hak penuh untuk mengendalikan data Anda:
-                    </p>
-
-                    <!-- 6.1 Cara Menghapus Akun -->
-                    <div id="cara-hapus-akun" class="scroll-mt-24 space-y-2 bg-gray-50 border border-gray-200 rounded-lg p-5 my-4">
-                        <h4 class="text-base font-bold text-black">6.1. Cara Menghapus Akun di Aplikasi</h4>
-                        <p class="text-xs text-gray-600 mb-2">
-                            Anda dapat menghapus akun secara permanen langsung melalui menu Profil di aplikasi Labvōra dengan langkah-langkah berikut:
-                        </p>
-                        <ol class="list-decimal list-inside space-y-1.5 text-xs text-gray-800 font-medium">
-                            <li>Buka aplikasi Labvōra dan masuk ke akun Anda.</li>
-                            <li>Masuk ke menu <strong>Profil</strong>.</li>
-                            <li>Geser ke bawah dan tekan tombol <strong class="text-red-600">HAPUS AKUN</strong>.</li>
-                            <li>Tekan <strong>Lanjutkan</strong> pada dialog peringatan pertama.</li>
-                            <li>Tekan <strong class="text-red-600">Ya, Hapus Akun</strong> pada dialog konfirmasi terakhir.</li>
-                        </ol>
-                    </div>
-
-                    <!-- 6.2 Data yang Dihapus -->
-                    <div id="data-dihapus" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.2. Data yang Akan Dihapus</h4>
-                        <p>
-                            Setelah Anda mengonfirmasi penghapusan, data akun aktif terhapus: identitas, kontak, alamat tempat tinggal, riwayat pemeriksaan medis di aplikasi, serta kredensial akun. Data tersebut tidak dapat dipulihkan.
-                        </p>
-                        <p>
-                            Data yang wajib disimpan menurut ketentuan rekam medis atau hukum yang berlaku tetap disimpan oleh klinik penyelenggara pemeriksaan selama periode wajib tersebut. Setelah periode wajib berakhir, data tersebut dihapus atau dianonimkan.
-                        </p>
-                    </div>
-
-                    <!-- 6.3 Penyimpanan Data -->
-                    <div id="retensi-cadangan" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.3. Penyimpanan Data</h4>
-                        <p>
-                            Labvōra tidak menyimpan salinan data Anda setelah akun dihapus. Setelah konfirmasi, data terhapus dari sistem aktif dan tidak lagi digunakan.
-                        </p>
-                    </div>
-
-                    <!-- 6.4 Bantuan Support -->
-                    <div id="bantuan-kontak" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.4. Konfirmasi Penghapusan &amp; Bantuan</h4>
-                        <p>
-                            Jika mengalami kendala saat menghapus akun di aplikasi, Anda dapat menghubungi kami melalui email di 
-                            <a href="mailto:labvora@ifukrida.net" class="text-[#15808d] underline font-medium">labvora@ifukrida.net</a>.
-                        </p>
-                    </div>
-
-                    <!-- 6.5 Hapus via Web/Email -->
-                    <div id="hapus-web" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.5. Permintaan Hapus via Web</h4>
-                        <p>
-                            Jika tidak bisa membuka aplikasi, kirim email ke
-                            <a href="mailto:labvora@ifukrida.net?subject=Permintaan%20Hapus%20Akun%20Labvora" class="text-[#15808d] underline font-medium">labvora@ifukrida.net</a>
-                            dengan subjek "Permintaan Hapus Akun Labvora" dan sertakan email akun serta username Anda. Kami proses maksimal 30 hari dan kirim konfirmasi setelah selesai.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- 7. Persetujuan Kebijakan -->
-                <section id="persetujuan" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">7. Persetujuan Kebijakan</h3>
-                    <p>
-                        Dengan mencentang kotak persetujuan pada halaman pendaftaran akun atau menggunakan layanan kami, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh ketentuan dalam Kebijakan Privasi &amp; Penghapusan Akun Labvōra ini.
-                    </p>
-                </section>
-
-                <!-- 8. Anak & Batas Usia -->
-                <section id="anak" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">8. Anak &amp; Batas Usia</h3>
-                    <p>
-                        Aplikasi Labvōra ditujukan untuk pengguna berusia 17 tahun ke atas, atau anak di bawah usia tersebut yang didaftarkan dan didampingi orang tua atau wali. Jika Anda orang tua atau wali dan menemukan data anak Anda terdaftar tanpa persetujuan, hubungi <a href="mailto:labvora@ifukrida.net" class="text-[#15808d] underline font-medium">labvora@ifukrida.net</a> agar kami hapus.
-                    </p>
-                </section>
-
-                <!-- 9. Perubahan Kebijakan -->
-                <section id="perubahan" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">9. Perubahan Kebijakan</h3>
-                    <p>
-                        Kebijakan ini dapat diperbarui mengikuti perubahan fitur atau ketentuan yang berlaku. Setiap perubahan penting diumumkan melalui pembaruan tanggal "Terakhir diperbarui" di halaman ini. Penggunaan aplikasi setelah perubahan berarti Anda menyetujui kebijakan yang berlaku.
-                    </p>
-                </section>
-
-            </article>
-
-            <!-- Right Column: Table of Contents / Sidebar (4 cols) -->
-            <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start text-xs text-gray-600 hidden lg:block">
-                <nav id="toc" class="space-y-3 border-l border-gray-100 pl-4">
-                    <div>
-                        <a href="#pendahuluan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">1. Pendahuluan</a>
-                    </div>
-                    <div>
-                        <a href="#informasi-dikumpulkan" data-toc class="toc-link font-bold text-black hover:text-gray-700 block transition">2. Informasi yang Kami Kumpulkan</a>
-                        <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
-                            <a href="#data-diri" data-toc class="toc-link hover:text-black block transition text-gray-500">2.1. Identitas &amp; Data Diri</a>
-                            <a href="#data-kesehatan" data-toc class="toc-link hover:text-black block transition text-gray-500">2.2. Data Kesehatan &amp; Kredensial</a>
-                            <a href="#data-otomatis" data-toc class="toc-link hover:text-black block transition text-gray-500">2.3. Data Otomatis &amp; Izin</a>
-                        </div>
-                    </div>
-                    <div>
-                        <a href="#tujuan-penggunaan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">3. Tujuan Penggunaan Informasi</a>
-                    </div>
-                    <div>
-                        <a href="#keamanan-data" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">4. Penyimpanan &amp; Keamanan Data</a>
-                    </div>
-                    <div>
-                        <a href="#pembagian-data" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">5. Pembagian Data ke Pihak Ketiga</a>
-                    </div>
-                    <div>
-                        <a href="#hak-pengguna" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">6. Hak Pengguna &amp; Penghapusan Akun</a>
-                        <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
-                            <a href="#cara-hapus-akun" data-toc class="toc-link hover:text-black block transition text-gray-500">6.1. Cara Menghapus Akun</a>
-                            <a href="#data-dihapus" data-toc class="toc-link hover:text-black block transition text-gray-500">6.2. Data yang Dihapus</a>
-                            <a href="#retensi-cadangan" data-toc class="toc-link hover:text-black block transition text-gray-500">6.3. Penyimpanan Data</a>
-                            <a href="#bantuan-kontak" data-toc class="toc-link hover:text-black block transition text-gray-500">6.4. Bantuan Support</a>
-                            <a href="#hapus-web" data-toc class="toc-link hover:text-black block transition text-gray-500">6.5. Hapus via Web</a>
-                        </div>
-                    </div>
-                    <div>
-                        <a href="#persetujuan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">7. Persetujuan Kebijakan</a>
-                    </div>
-                    <div>
-                        <a href="#anak" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">8. Anak &amp; Batas Usia</a>
-                    </div>
-                    <div>
-                        <a href="#perubahan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">9. Perubahan Kebijakan</a>
-                    </div>
-                </nav>
-            </aside>
-
+                <div class="fake-nav">
+                  <b>Beranda</b><span>Pesanan</span><span>Hasil</span
+                  ><span>Profil</span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-store">
+              <a
+                class="play-badge"
+                href="https://play.google.com/store/apps"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Temukan di Google Play"
+                ><img
+                  src="assets/getiton.png"
+                  alt="Temukan di Google Play"
+                  width="148"
+                  height="44"
+              /></a>
+              <span class="store-note">Tersedia untuk perangkat Android</span>
+              <span class="hero-store-arrow" aria-hidden="true"></span>
+            </div>
+          </div>
+          <a
+            class="scroll-seal"
+            href="index.html"
+            aria-label="Lanjut ke cara kerja"
+            ><span></span
+            ><svg aria-hidden="true">
+              <use href="#icon-arrow" transform="rotate(90 12 12)" /></svg
+          ></a>
         </div>
+      </section>
+
+      <section class="benefits" id="manfaat">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Semua fitur penting dalam satu aplikasi</h2>
+            <p>Labvōra membantu Anda mengelola perjalanan pemeriksaan lab dengan lebih praktis, jelas, dan aman.</p>
+          </div>
+          <div class="benefit-grid">
+            <article class="benefit-card reveal">
+              <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-search" /></svg></i>
+              <h3>Pesan Tes Lab</h3>
+              <p>Pilih pemeriksaan yang Anda butuhkan dengan informasi tes dan persiapan yang mudah dipahami.</p>
+            </article>
+            <article class="benefit-card reveal">
+              <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-calendar" /></svg></i>
+              <h3>Tentukan Jadwal</h3>
+              <p>Pilih klinik serta tanggal dan waktu kunjungan yang paling sesuai untuk Anda.</p>
+            </article>
+            <article class="benefit-card reveal">
+              <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-tube" /></svg></i>
+              <h3>Pantau Status</h3>
+              <p>Pantau status dari pengambilan sampel hingga proses analisis laboratorium.</p>
+            </article>
+            <article class="benefit-card reveal">
+              <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-shield" /></svg></i>
+              <h3>Cek Hasil</h3>
+              <p>Akses hasil pemeriksaan yang telah diverifikasi dan akan tersimpan dengan aman dalam riwayat akun Anda.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="workflow" id="cara-kerja">
+        <div class="container workflow-grid">
+          <div
+            class="screen-collage reveal"
+            aria-label="Kumpulan layar aplikasi Labvōra"
+          >
+            <div class="device mini-device device-a">
+              <div class="device-screen">
+                <img
+                  class="screen-image"
+                  src="assets/tests.jpeg"
+                  alt="Layar pemesanan tes Labvōra"
+                  data-screen-image
+                  hidden
+                />
+                <div class="fake-status"><b>09.41</b><span>●</span></div>
+                <div class="fake-body">
+                  <div class="fake-head">
+                    <div>
+                      <small>Pilih layanan</small><strong>Pemeriksaan</strong>
+                    </div>
+                    <span class="avatar">2</span>
+                  </div>
+                  <div class="fake-search">Cari pemeriksaan</div>
+                  <div class="fake-card">
+                    <small>Paket tersedia</small><strong>Darah lengkap</strong
+                    ><span>14 parameter</span>
+                  </div>
+                  <div class="fake-label">Pilihan lain</div>
+                  <div class="fake-actions">
+                    <div class="fake-action"><i>+</i>Gula</div>
+                    <div class="fake-action"><i>+</i>Lipid</div>
+                    <div class="fake-action"><i>+</i>Hati</div>
+                  </div>
+                </div>
+                <div class="fake-nav">
+                  <b>Tes</b><span>Jadwal</span><span>Profil</span>
+                </div>
+              </div>
+            </div>
+            <div class="device mini-device device-b">
+              <div class="device-screen">
+                <img
+                  class="screen-image"
+                  src="assets/schedule.jpeg"
+                  alt="Layar pelacakan sampel Labvōra"
+                  data-screen-image
+                  hidden
+                />
+                <div class="fake-status"><b>09.41</b><span>●</span></div>
+                <div class="fake-body">
+                  <div class="fake-head">
+                    <div>
+                      <small>Nomor sampel</small><strong>LV-0924</strong>
+                    </div>
+                    <span class="avatar">✓</span>
+                  </div>
+                  <div class="fake-card">
+                    <small>Status terbaru</small
+                    ><strong>Sedang dianalisis</strong
+                    ><span>Hari ini · 10.18</span>
+                  </div>
+                  <div class="fake-label">Perjalanan sampel</div>
+                  <div class="fake-progress">
+                    <b>Diambil → Dianalisis</b>
+                    <div class="line"></div>
+                  </div>
+                </div>
+                <div class="fake-nav">
+                  <b>Status</b><span>Detail</span><span>Bantuan</span>
+                </div>
+              </div>
+            </div>
+            <div class="device mini-device device-c">
+              <div class="device-screen">
+                <img
+                  class="screen-image"
+                  src="assets/confirmation.jpeg"
+                  alt="Layar hasil pemeriksaan Labvōra"
+                  data-screen-image
+                  hidden
+                />
+                <div class="fake-status"><b>09.41</b><span>●</span></div>
+                <div class="fake-body">
+                  <div class="fake-head">
+                    <div>
+                      <small>14 September</small><strong>Hasil tes</strong>
+                    </div>
+                    <span class="avatar">✓</span>
+                  </div>
+                  <div class="fake-card">
+                    <small>Hasil terverifikasi</small
+                    ><strong>Darah lengkap</strong
+                    ><span>4 parameter utama</span>
+                  </div>
+                  <div class="fake-label">Hemoglobin</div>
+                  <div class="fake-progress">
+                    <b>13,8 g/dL</b>
+                    <div class="line"></div>
+                  </div>
+                </div>
+                <div class="fake-nav">
+                  <b>Hasil</b><span>Unduh</span><span>Bagikan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="workflow-copy reveal">
+            <h2>Cara Labvōra bekerja</h2>
+            <p>
+              Empat alur terintegrasi dari pemesanan hingga sertifikat hasil tes
+              resmi tersimpan.
+            </p>
+            <div class="steps">
+              <article class="step">
+                <span class="step-number">1</span>
+                <div>
+                  <h3>Pilih pemeriksaan</h3>
+                  <p>
+                    Tentukan tes yang dibutuhkan sebelum jadwal kunjungan.
+                  </p>
+                </div>
+              </article>
+              <article class="step">
+                <span class="step-number">2</span>
+                <div>
+                  <h3>Tentukan klinik mitra & jadwal</h3>
+                  <p>
+                    Pilih klinik mitra resmi terdekat serta tanggal dan jam kunjungan.
+                  </p>
+                </div>
+              </article>
+              <article class="step">
+                <span class="step-number">3</span>
+                <div>
+                  <h3>Pantau pemrosesan sampel</h3>
+                  <p>
+                    Ikuti perjalanan sampel secara real-time dari pengambilan,
+                    uji laboratorium, proses analisis sampel, hingga verifikasi hasil.
+                  </p>
+                </div>
+              </article>
+              <article class="step">
+                <span class="step-number">4</span>
+                <div>
+                  <h3>Akses hasil resmi & riwayat</h3>
+                  <p>
+                    Buka dan unduh hasil pemeriksaan di dalam aplikasi Labvōra. Hasil pemeriksaan akan tersimpan dengan aman dalam riwayat akun Anda
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="mulai">
+        <div class="container cta-box reveal">
+          <div class="cta-copy">
+            <h2>Siap untuk mengoptimalkan kesehatan Anda hari ini?</h2>
+            <p>Nikmati kemudahan pemesanan tes lab bersama Labvōra !</p>
+            <div class="store-row">
+              <a
+                class="play-badge"
+                href="https://play.google.com/store/apps"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Temukan di Google Play"
+                ><img
+                  src="assets/getiton.png"
+                  alt="Temukan di Google Play"
+                  width="175"
+                  height="52" /></a
+              ><span class="store-note">Tersedia untuk perangkat Android</span>
+            </div>
+          </div>
+          <div
+            class="cta-devices"
+            aria-label="Pratinjau Beranda dan hasil Labvōra"
+          >
+            <div class="device cta-device cta-one">
+              <div class="device-screen">
+                <img
+                  class="screen-image"
+                  src="assets/login.jpeg"
+                  alt="Beranda aplikasi Labvōra"
+                  data-screen-image
+                  hidden
+                />
+                <div class="fake-status"><b>09.41</b><span>●</span></div>
+                <div class="fake-body">
+                  <div class="fake-head">
+                    <div>
+                      <small>Selamat pagi</small><strong>Alya Putri</strong>
+                    </div>
+                    <span class="avatar">AP</span>
+                  </div>
+                  <div class="fake-search">Cari pemeriksaan</div>
+                  <div class="fake-card">
+                    <small>Jadwal berikutnya</small
+                    ><strong>Darah lengkap</strong><span>Besok · 09.30</span>
+                  </div>
+                  <div class="fake-label">Akses cepat</div>
+                  <div class="fake-actions">
+                    <div class="fake-action"><i>⌕</i>Tes</div>
+                    <div class="fake-action"><i>□</i>Janji</div>
+                    <div class="fake-action"><i>✓</i>Hasil</div>
+                  </div>
+                </div>
+                <div class="fake-nav">
+                  <b>Beranda</b><span>Pesanan</span><span>Hasil</span>
+                </div>
+              </div>
+            </div>
+            <div class="device cta-device cta-two">
+              <div class="device-screen">
+                <img
+                  class="screen-image"
+                  src="assets/signup.jpeg"
+                  alt="Hasil pemeriksaan Labvōra"
+                  data-screen-image
+                  hidden
+                />
+                <div class="fake-status"><b>09.41</b><span>●</span></div>
+                <div class="fake-body">
+                  <div class="fake-head">
+                    <div>
+                      <small>Hasil terbaru</small><strong>Darah lengkap</strong>
+                    </div>
+                    <span class="avatar">✓</span>
+                  </div>
+                  <div class="fake-card">
+                    <small>Terverifikasi</small><strong>Hasil tersedia</strong
+                    ><span>14 Sep 2026</span>
+                  </div>
+                  <div class="fake-label">Ringkasan</div>
+                  <div class="fake-progress">
+                    <b>4 parameter</b>
+                    <div class="line"></div>
+                  </div>
+                </div>
+                <div class="fake-nav">
+                  <b>Hasil</b><span>Unduh</span><span>Profil</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="relative bg-white border-t border-gray-100 overflow-hidden mt-16">
-        <!-- Content -->
-        <div class="relative z-10 max-w-6xl mx-auto px-6 pt-14 pb-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
-                <!-- Brand -->
-                <div class="md:col-span-5">
-                    <img src="logoname.jpg" alt="Labvōra" class="h-7 w-auto mb-4" />
-                    <p class="text-sm text-gray-500 leading-relaxed max-w-sm">
-                        Pesan tes laboratorium, pantau status pemeriksaan, dan lihat hasil tes dalam satu aplikasi.
-                    </p>
-                    <div class="mt-6 space-y-3 text-sm">
-                    </div>
-                </div>
-
-            </div>
-            <div class="border-t border-gray-100 mt-12 pt-6 flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
-                <p class="text-xs text-gray-400">&copy; 2026 Labvōra. Hak cipta dilindungi undang-undang.</p>
-                <p class="text-xs text-gray-400">Terakhir diperbarui: 10 September 2026</p>
-            </div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div>
+            <a class="brand" href="index.html"
+              ><img
+                class="footer-logo"
+                src="assets/horiz.png"
+                alt="Labvōra"
+                width="235"
+                height="112"
+            /></a>
+            <p class="footer-copy">
+             Pilih pemeriksaan, jadwalkan ke klinik, pantau sampel, dan akses hasil dalam satu aplikasi.
+            </p>
+          </div>
         </div>
-        <!-- Giant logo overlay in design system color (teal) -->
-        <div class="absolute inset-x-0 bottom-0 z-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-            <img src="logoname.jpg" alt="" class="w-[130%] max-w-none h-auto object-cover object-top opacity-[0.07] translate-y-[28%] -ml-[5%]" />
+        <div class="footer-bottom">
+          <span>© 2026 Labvōra. Hak cipta dilindungi.</span
+          ><span>Terakhir diperbarui: 14 September 2026</span>
         </div>
+      </div>
+      <div class="footer-watermark" aria-hidden="true">
+        <img src="assets/horiz.png" alt="" />
+      </div>
     </footer>
 
     <script>
-        (function () {
-            var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
-            var map = {};
-            var heads = {};
-            links.forEach(function (link) {
-                var id = link.getAttribute('href').slice(1);
-                var sec = document.getElementById(id);
-                if (sec) {
-                    map[id] = link;
-                    var head = sec.querySelector('h3, h4');
-                    if (head) {
-                        head.classList.add('sec-head');
-                        heads[id] = head;
-                    }
-                }
+      (function () {
+        var toggle = document.querySelector(".menu-button");
+        var menu = document.getElementById("mobile-menu");
+        function closeMenu() {
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Buka menu");
+          menu.hidden = true;
+          document.body.classList.remove("menu-open");
+        }
+        toggle.addEventListener("click", function () {
+          var open = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!open));
+          toggle.setAttribute("aria-label", open ? "Buka menu" : "Tutup menu");
+          menu.hidden = open;
+          if (!open) {
+            menu.style.display = "block";
+            menu.style.position = "fixed";
+            menu.style.zIndex = "1000";
+            menu.style.inset = "74px 0 auto";
+            menu.style.background = "#fff";
+            menu.querySelectorAll("a").forEach(function (link, index) {
+              link.style.display = "block";
+              link.style.padding = "13px 4px";
+              if (index === 2) {
+                link.style.marginTop = "14px";
+                link.style.color = "#fff";
+                link.style.textAlign = "center";
+                link.style.background = "var(--teal)";
+                link.style.borderRadius = "9px";
+              }
             });
-            function setActive(id) {
-                links.forEach(function (l) { l.classList.remove('is-active'); });
-                Object.keys(heads).forEach(function (k) { heads[k].classList.remove('is-active'); });
-                if (map[id]) map[id].classList.add('is-active');
-                if (heads[id]) heads[id].classList.add('is-active');
+          }
+          document.body.classList.toggle("menu-open", !open);
+        });
+        menu.addEventListener("click", function (e) {
+          if (e.target.closest("a")) closeMenu();
+        });
+        window.addEventListener("resize", function () {
+          if (innerWidth > 760) closeMenu();
+        });
+        document
+          .querySelectorAll("[data-screen-image]")
+          .forEach(function (image) {
+            function show() {
+              if (image.naturalWidth > 0) image.hidden = false;
             }
-            if ('IntersectionObserver' in window) {
-                var observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) setActive(entry.target.id);
-                    });
-                }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-                Object.keys(map).forEach(function (id) {
-                    observer.observe(document.getElementById(id));
-                });
-            }
-        })();
+            image.addEventListener("load", show, { once: true });
+            if (image.complete) show();
+          });
+        var items = document.querySelectorAll(".reveal");
+        if (
+          "IntersectionObserver" in window &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: "0px 0px -8%" },
+          );
+          items.forEach(function (item) {
+            observer.observe(item);
+          });
+        } else {
+          items.forEach(function (item) {
+            item.classList.add("visible");
+          });
+        }
+      })();
     </script>
-
-</body>
+  </body>
 </html>

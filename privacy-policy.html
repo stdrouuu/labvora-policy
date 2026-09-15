@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Kebijakan Privasi Labvora: cara kami mengumpulkan, menggunakan, menyimpan, dan menghapus data pribadi serta akun Anda.">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta property="og:title" content="Kebijakan Privasi & Penghapusan Akun Labvora">
+    <meta property="og:description" content="Cara kami mengumpulkan, menggunakan, menyimpan, dan menghapus data pribadi serta akun Anda di aplikasi Labvora.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logofull.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Kebijakan Privasi &amp; Penghapusan Akun Labvōra</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-padding-top: 96px;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #111827;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+        .site-header,
+        .site-footer {
+            font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        }
+        .toc-link {
+            position: relative;
+        }
+        .toc-link::before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            bottom: 2px;
+            width: 2px;
+            border-radius: 2px;
+            background: #3A9DA6;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        #toc > div > .toc-link::before {
+            left: -17px;
+        }
+        #toc .ml-3 .toc-link::before {
+            left: -13px;
+        }
+        .toc-link.is-active {
+            color: #3A9DA6;
+            font-weight: 700;
+        }
+        .toc-link.is-active::before {
+            opacity: 1;
+        }
+        .sec-head {
+            position: relative;
+        }
+        .sec-head::after {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: #f65d83;
+            margin-left: 8px;
+            vertical-align: middle;
+            transform: scale(0);
+            transition: transform 0.2s ease;
+        }
+        .sec-head.is-active::after {
+            transform: scale(1);
+        }
+        details.toc-mobile > summary {
+            list-style: none;
+        }
+        details.toc-mobile > summary::-webkit-details-marker {
+            display: none;
+        }
+        details.toc-mobile > summary::after {
+            content: "";
+            flex: none;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #374151;
+            border-bottom: 2px solid #374151;
+            transform: rotate(45deg) translate(-1px, -1px);
+            transition: transform 0.2s ease;
+        }
+        details.toc-mobile[open] > summary::after {
+            transform: rotate(225deg) translate(-1px, -1px);
+        }
+
+        body.menu-open{overflow:hidden}
+        body.menu-open::after{content:"";position:fixed;z-index:38;inset:74px 0 0;background:rgba(8,20,24,.62);pointer-events:auto}
+
+        /* Synchronized Navbar & Footer Styles */
+        .site-header{position:sticky;z-index:40;top:0;height:74px;background:rgba(255,255,255,.96);border-bottom:1px solid #edf0f2;backdrop-filter:blur(12px)}
+        .nav-row{width:min(1160px,calc(100% - 48px));margin-inline:auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
+        .brand{display:inline-flex;align-items:center;min-width:0}
+        .brand img{width:162px;height:62px;object-fit:contain;object-position:left center}
+        .desktop-nav{display:flex;align-items:center;column-gap:30px;margin-left:auto;white-space:nowrap}
+        .desktop-nav a{color:#394252;font-size:.88rem;font-weight:500;transition:color .2s ease}
+        .desktop-nav a:hover{color:#3A9DA6}
+        .desktop-nav a.active,.mobile-nav a.active{color:#3A9DA6;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+        .nav-button{display:inline-flex!important;align-items:center;min-height:42px;padding:0 18px;color:#fff!important;background:#3A9DA6!important;border-radius:999px;font-weight:600!important;transition:background .2s ease}
+        .nav-button:hover{background:#2a7d85!important}
+        .menu-button{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:0;border-radius:0;background:transparent;cursor:pointer}
+        .menu-button span,.menu-button span:before,.menu-button span:after{display:block;width:22px;height:2px;background:#3A9DA6;transition:none}
+        .menu-button span{position:relative}.menu-button span:before,.menu-button span:after{content:"";position:absolute;left:0}.menu-button span:before{top:-7px}.menu-button span:after{top:7px}
+        .menu-button[aria-expanded="true"] span,.menu-button[aria-expanded="true"] span:before,.menu-button[aria-expanded="true"] span:after{background:#3A9DA6;transform:none}
+        .mobile-nav{position:fixed;z-index:39;inset:74px 0 auto;padding:18px 24px 24px;background:#fff;border-bottom:1px solid #e4e8ec;box-shadow:0 18px 35px rgba(16,24,40,.1)}
+        .mobile-nav a{display:block;padding:13px 4px;border-bottom:1px solid #e4e8ec;font-weight:600}
+        .mobile-nav a:last-child{margin-top:14px;color:#fff;text-align:center;background:#3A9DA6;border:0;border-radius:9px}.mobile-nav a[href*="cara-hapus-akun"]{margin-top:0;color:#394252;background:transparent;text-align:left;border-bottom:1px solid #e4e8ec;border-radius:0}
+
+        .site-footer{position:relative;min-height:355px;padding:58px 0 28px;overflow:hidden;background:#fff;border-top:1px solid #e4e8ec;isolation:isolate}
+        .footer-container{width:min(1160px,calc(100% - 48px));margin-inline:auto;position:relative;z-index:2}
+        .footer-main{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;padding-bottom:42px}
+        .footer-logo{width:235px;height:112px;margin:-25px 0 -14px;object-fit:contain;object-position:left center}
+        .footer-copy{max-width:430px;color:#4b5565;font-size:.9rem}
+        .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px 35px;align-content:center}
+        .footer-links a{color:#4e5968;font-size:.88rem}
+        .footer-links a:hover{color:#3A9DA6}
+        .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:22px;color:#9aa2ae;border-top:1px solid #e4e8ec;font-size:.76rem}
+        .footer-watermark{position:absolute;z-index:0;inset:0;display:flex;align-items:flex-end;overflow:hidden;pointer-events:none}
+        .footer-watermark img{width:125%;max-width:none;opacity:.055;transform:translate(-5%,38%)}
+
+        @media(max-width:760px){
+            .nav-row{width:min(100% - 30px,650px)}
+            .desktop-nav{display:none}
+            .menu-button{display:flex}
+            .footer-main{grid-template-columns:1fr;gap:18px;padding-bottom:24px}
+            .footer-logo{width:180px;height:86px;margin:-18px 0 -10px}
+            .site-footer{min-height:auto;padding:42px 0 24px}
+        }
+        @media(max-width:500px){
+            .nav-row{width:min(100% - 22px,460px)}
+            .brand img{width:140px;height:56px}
+            .footer-links{grid-template-columns:1fr}
+            .footer-bottom{flex-direction:column;gap:7px}
+            .footer-watermark img{width:115%;opacity:.035;transform:translate(-7%,55%)}
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased selection:bg-gray-200">
+
+    <!-- Navbar -->
+    <header class="site-header">
+        <div class="nav-row">
+            <a class="brand" href="index.html#atas" aria-label="Labvōra, kembali ke beranda"><img src="assets/horiz.png" alt="Labvōra by Cinta Kasih" width="152" height="58"></a>
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+            <a href="index.html">Beranda</a><a href="privacy-policy.html">Kebijakan Privasi</a><a href="privacy-policy.html#cara-hapus-akun" style="display:inline-flex;color:#394252!important;background:transparent!important;text-align:left!important;border:0;border-radius:0;">Hapus akun</a><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
+            </nav>
+            <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu"><span></span></button>
+        </div>
+        <nav class="mobile-nav" id="mobile-menu" aria-label="Navigasi seluler" hidden>
+            <a href="index.html">Beranda</a><a href="privacy-policy.html">Kebijakan Privasi</a><a href="privacy-policy.html#cara-hapus-akun" style="display:block;margin-top:0!important;padding:13px 4px;color:#394252!important;text-align:left!important;background:transparent!important;border:0;border-bottom:1px solid #e4e8ec!important;border-radius:0!important;">Hapus akun</a><a href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
+        </nav>
+        <div class="menu-backdrop" aria-hidden="true"></div>
+    </header>
+
+    <!-- Top Header -->
+    <header id="atas" class="max-w-6xl mx-auto px-6 pt-10 pb-6 border-b border-gray-100">
+        <h1 class="text-3xl font-bold text-black tracking-tight">Kebijakan Privasi &amp; Penghapusan Akun Labvōra</h1>
+        <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: 10 September 2026</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pt-2 pb-8">
+        <!-- Logo Overlay Banner -->
+         <div class="relative flex justify-center items-center pt-0 pb-1 mb-2 overflow-hidden">
+        <img src="assets/horiz.png" alt="Labvora by Cinta Kasih" class="block mx-auto w-full max-w-2xl h-auto object-contain relative z-10 -translate-x-[1%]" />
+    </div>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-gray-400 mb-8">
+            <a href="index.html#atas" class="hover:text-gray-700">Beranda</a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span class="text-gray-800 font-medium" aria-current="page">Kebijakan Privasi</span>
+        </nav>
+
+        <!-- Mobile Table of Contents -->
+        <details class="toc-mobile lg:hidden mb-6 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
+            <summary class="cursor-pointer font-bold text-gray-800 flex items-center justify-between gap-3">Daftar isi</summary>
+            <nav class="mt-3 space-y-2 text-gray-600">
+                <a href="#pendahuluan" class="block hover:text-black">1. Pendahuluan</a>
+                <a href="#informasi-dikumpulkan" class="block hover:text-black">2. Informasi yang Kami Kumpulkan</a>
+                <a href="#tujuan-penggunaan" class="block hover:text-black">3. Tujuan Penggunaan Informasi</a>
+                <a href="#keamanan-data" class="block hover:text-black">4. Penyimpanan &amp; Keamanan Data</a>
+                <a href="#pembagian-data" class="block hover:text-black">5. Pembagian Data ke Pihak Ketiga</a>
+                <a href="#hak-pengguna" class="block hover:text-black">6. Hak Pengguna &amp; Penghapusan Akun</a>
+                <a href="#cara-hapus-akun" class="block pl-3 hover:text-black">6.1. Cara Menghapus Akun</a>
+                <a href="#persetujuan" class="block hover:text-black">7. Persetujuan Kebijakan</a>
+            </nav>
+        </details>
+
+        <!-- Two Column Layout matching image -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Column: Article Body (8 cols) -->
+            <article class="lg:col-span-8 space-y-8 text-gray-700 text-sm leading-relaxed">
+                
+                <!-- Main Header inside article -->
+                <div>
+                    <h2 class="text-3xl font-bold text-black tracking-tight mb-4">Kebijakan Privasi</h2>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        Di aplikasi Labvōra ("kami"), kami sangat menghargai privasi Anda dan berkomitmen untuk melindungi informasi pribadi Anda. Kebijakan Privasi ini menjelaskan praktik kami mengenai pengumpulan, penggunaan, penyimpanan, dan perlindungan data Anda saat mengakses aplikasi dan layanan laboratorium medis kami. Mohon baca dokumen ini dengan seksama untuk memahami bagaimana kami mengelola informasi Anda.
+                    </p>
+                </div>
+
+                <!-- 1. Pendahuluan -->
+                <section id="pendahuluan" class="scroll-mt-24 space-y-3 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">1. Pendahuluan</h3>
+                    <p>
+                        Selamat datang di aplikasi Labvōra. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi pengguna saat mendaftar, dan menggunakan layanan pemesanan tes laboratorium. Kami menyarankan Anda untuk membaca dokumen ini secara seksama agar memahami bagaimana informasi Anda dikelola.
+                    </p>
+                </section>
+
+                <!-- 2. Informasi yang Kami Kumpulkan -->
+                <section id="informasi-dikumpulkan" class="scroll-mt-24 space-y-4 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">2. Informasi yang Kami Kumpulkan</h3>
+                    <p>
+                        Saat Anda membuat akun dan menggunakan aplikasi Labvōra, kami mengumpulkan beberapa data pribadi yang Anda berikan secara sadar, antara lain:
+                    </p>
+
+                    <!-- 2.1 Personal Data -->
+                    <div id="data-diri" class="scroll-mt-24 space-y-2 pt-2">
+                        <h4 class="text-base font-bold text-black">2.1. Identitas &amp; Data Diri</h4>
+                        <p>
+                            Kami mengumpulkan Nama Lengkap, Username, Jenis Kelamin, Tanggal Lahir, Alamat Email, Nomor Telepon (+62), serta Alamat Tempat Tinggal lengkap Anda untuk keperluan administrasi klinik.
+                        </p>
+                    </div>
+
+                    <!-- 2.2 Medical & Credentials -->
+                    <div id="data-kesehatan" class="scroll-mt-24 space-y-2 pt-2">
+                        <h4 class="text-base font-bold text-black">2.2. Data Kesehatan &amp; Kredensial</h4>
+                        <p>
+                            Meliputi foto surat rujukan dokter (jika ada), riwayat pemesanan tes lab, hasil pemeriksaan laboratorium, serta kata sandi (password) yang tersimpan secara terenkripsi dan token otentikasi.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 3. Tujuan Penggunaan Informasi -->
+                <section id="tujuan-penggunaan" class="scroll-mt-24 space-y-4 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">3. Tujuan Penggunaan Informasi</h3>
+                    <p>
+                        Data pribadi yang kami kumpulkan digunakan secara khusus untuk keperluan operasional dan pelayanan kesehatan Anda:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
+                        <li>Memproses pendaftaran dan verifikasi otentikasi akun pengguna.</li>
+                        <li>Mengatur dan mengonfirmasi jadwal janji temu pemeriksaan laboratorium di klinik mitra.</li>
+                        <li>Menampilkan riwayat serta sertifikat hasil pemeriksaan medis secara pribadi dan aman.</li>
+                        <li>Menghubungi Anda terkait pengingat jadwal, pembatalan, atau pembaruan status pesanan.</li>
+                    </ul>
+                </section>
+
+                <!-- 4. Penyimpanan & Keamanan Data -->
+                <section id="keamanan-data" class="scroll-mt-24 space-y-3 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">4. Penyimpanan &amp; Keamanan Data</h3>
+                    <p>
+                        Kami menerapkan standar enkripsi dan sistem keamanan basis data untuk melindungi informasi pribadi Anda dari akses tidak sah, kebocoran, atau pengubahan. Seluruh rekam medis dan data diri disimpan dalam server aman yang mematuhi regulasi privasi data kesehatan.
+                    </p>
+                </section>
+
+                <!-- 5. Pembagian Data ke Pihak Ketiga -->
+                <section id="pembagian-data" class="scroll-mt-24 space-y-3 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">5. Pembagian Data ke Pihak Ketiga</h3>
+                    <p>
+                        Labvōra <strong>TIDAK AKAN PERNAH</strong> menjual, menyewakan, atau membagikan data pribadi Anda kepada pihak ketiga untuk kepentingan komersial atau iklan. Data Anda hanya dibagikan secara terbatas kepada klinik mitra resmi tempat Anda mendaftar pemeriksaan laboratorium.
+                    </p>
+                </section>
+
+                <!-- 6. Hak Pengguna & Kebijakan Penghapusan Akun -->
+                <section id="hak-pengguna" class="scroll-mt-24 space-y-4 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">6. Hak Pengguna &amp; Kebijakan Penghapusan Akun</h3>
+                    <p>
+                        Kendali atas akun dan data pribadi Anda adalah prioritas utama kami. Sebagai pemilik data pribadi, Anda memiliki hak penuh untuk mengendalikan data Anda:
+                    </p>
+
+                    <!-- 6.1 Cara Menghapus Akun -->
+                    <div id="cara-hapus-akun" class="scroll-mt-24 space-y-2 bg-gray-50 border border-gray-200 rounded-lg p-5 my-4">
+                        <h4 class="text-base font-bold text-black">6.1. Cara Menghapus Akun di Aplikasi</h4>
+                        <p class="text-xs text-gray-600 mb-2">
+                            Anda dapat menghapus akun secara permanen langsung melalui menu Profil di aplikasi Labvōra dengan langkah-langkah berikut:
+                        </p>
+                        <ol class="list-decimal list-inside space-y-1.5 text-xs text-gray-800 font-medium">
+                            <li>Buka aplikasi Labvōra dan masuk ke akun Anda.</li>
+                            <li>Masuk ke menu <strong>Profil</strong>.</li>
+                            <li>Gulir ke bawah dan tekan tombol <strong class="text-red-600">HAPUS AKUN</strong>.</li>
+                            <li>Tekan <strong>Lanjutkan</strong> pada dialog peringatan pertama.</li>
+                            <li>Tekan <strong class="text-red-600">Ya, Hapus Akun</strong> pada dialog konfirmasi terakhir.</li>
+                        </ol>
+                    </div>
+
+                    <!-- 6.2 Data yang Dihapus -->
+                    <div id="data-dihapus" class="scroll-mt-24 space-y-2 pt-2">
+                        <h4 class="text-base font-bold text-black">6.2. Data yang Akan Dihapus</h4>
+                        <p>
+                            Setelah Anda mengonfirmasi penghapusan, seluruh data identitas, kontak, domisili, riwayat pemeriksaan medis, serta kredensial akun akan dihapus secara permanen dan tidak dapat dipulihkan.
+                        </p>
+                    </div>
+
+                    <!-- 6.3 Retensi & Cadangan -->
+                    <div id="retensi-cadangan" class="scroll-mt-24 space-y-2 pt-2">
+                        <h4 class="text-base font-bold text-black">6.3. Penyimpanan Sementara &amp; Retensi</h4>
+                        <p>
+                            Labvōra tidak menyimpan data pribadi Anda untuk kepentingan komersial setelah akun dihapus. Salinan terenkripsi yang tersisa di sistem backup akan terhapus otomatis maksimal 24 bulan sesuai jadwal rotasi backup.
+                        </p>
+                    </div>
+
+                    <!-- 6.4 Bantuan Support -->
+                    <div id="bantuan-kontak" class="scroll-mt-24 space-y-2 pt-2">
+                        <h4 class="text-base font-bold text-black">6.4. Konfirmasi Penghapusan &amp; Bantuan</h4>
+                        <p>
+                            Jika mengalami kendala saat menghapus akun di aplikasi, Anda dapat menghubungi kami melalui email di 
+                            <a href="mailto:brandon.412024022@civitas.ukrida.ac.id" class="text-[#3A9DA6] underline font-medium">brandon.412024022@civitas.ukrida.ac.id</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 7. Persetujuan Kebijakan -->
+                <section id="persetujuan" class="scroll-mt-24 space-y-3 pt-4">
+                    <h3 class="text-xl font-bold text-black tracking-tight">7. Persetujuan Kebijakan</h3>
+                    <p>
+                        Dengan mencentang kotak persetujuan pada halaman pendaftaran akun atau menggunakan layanan kami, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh ketentuan dalam Kebijakan Privasi &amp; Penghapusan Akun Labvōra ini.
+                    </p>
+                </section>
+
+            </article>
+
+            <!-- Right Column: Table of Contents / Sidebar (4 cols) -->
+            <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start text-xs text-gray-600 hidden lg:block">
+                <nav id="toc" class="space-y-3 border-l border-gray-100 pl-4">
+                    <div>
+                        <a href="#pendahuluan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">1. Pendahuluan</a>
+                    </div>
+                    <div>
+                        <a href="#informasi-dikumpulkan" data-toc class="toc-link font-bold text-black hover:text-gray-700 block transition">2. Informasi yang Kami Kumpulkan</a>
+                        <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
+                            <a href="#data-diri" data-toc class="toc-link hover:text-black block transition text-gray-500">2.1. Identitas &amp; Data Diri</a>
+                            <a href="#data-kesehatan" data-toc class="toc-link hover:text-black block transition text-gray-500">2.2. Data Kesehatan &amp; Kredensial</a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#tujuan-penggunaan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">3. Tujuan Penggunaan Informasi</a>
+                    </div>
+                    <div>
+                        <a href="#keamanan-data" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">4. Penyimpanan &amp; Keamanan Data</a>
+                    </div>
+                    <div>
+                        <a href="#pembagian-data" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">5. Pembagian Data ke Pihak Ketiga</a>
+                    </div>
+                    <div>
+                        <a href="#hak-pengguna" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">6. Hak Pengguna &amp; Penghapusan Akun</a>
+                        <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
+                            <a href="#cara-hapus-akun" data-toc class="toc-link hover:text-black block transition text-gray-500">6.1. Cara Menghapus Akun</a>
+                            <a href="#data-dihapus" data-toc class="toc-link hover:text-black block transition text-gray-500">6.2. Data yang Dihapus</a>
+                            <a href="#retensi-cadangan" data-toc class="toc-link hover:text-black block transition text-gray-500">6.3. Retensi &amp; Cadangan</a>
+                            <a href="#bantuan-kontak" data-toc class="toc-link hover:text-black block transition text-gray-500">6.4. Bantuan Support</a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#persetujuan" data-toc class="toc-link hover:text-black hover:font-bold transition block text-gray-700">7. Persetujuan Kebijakan</a>
+                    </div>
+                </nav>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div>
+                    <a class="brand" href="index.html#atas"><img class="footer-logo" src="assets/horiz.png" alt="Labvōra" width="235" height="112"></a>
+                    <p class="footer-copy">Pesan tes lab, kelola hasil, dan kendalikan data privasi Anda dengan aman.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Labvōra. Hak cipta dilindungi undang-undang.</span>
+                <span>Terakhir diperbarui: 14 September 2026</span>
+            </div>
+        </div>
+        <div class="footer-watermark" aria-hidden="true"><img src="assets/horiz.png" alt=""></div>
+    </footer>
+
+    <script>
+        (function () {
+            // Mobile navigation toggle
+            var toggle = document.querySelector('.menu-button');
+            var menu = document.getElementById('mobile-menu');
+            if (toggle && menu) {
+                function closeMenu() {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-label', 'Buka menu');
+                    menu.hidden = true;
+                    document.body.classList.remove('menu-open');
+                }
+                toggle.addEventListener('click', function () {
+                    var open = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', String(!open));
+                    toggle.setAttribute('aria-label', open ? 'Buka menu' : 'Tutup menu');
+                    menu.hidden = open;
+                    document.body.classList.toggle('menu-open', !open);
+                });
+                menu.addEventListener('click', function (e) {
+                    if (e.target.closest('a')) closeMenu();
+                });
+                window.addEventListener('resize', function () {
+                    if (innerWidth > 760) closeMenu();
+                });
+            }
+
+            // Table of Contents spy
+            var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+            var map = {};
+            var heads = {};
+            links.forEach(function (link) {
+                var id = link.getAttribute('href').slice(1);
+                var sec = document.getElementById(id);
+                if (sec) {
+                    map[id] = link;
+                    var head = sec.querySelector('h3, h4');
+                    if (head) {
+                        head.classList.add('sec-head');
+                        heads[id] = head;
+                    }
+                }
+            });
+            function setActive(id) {
+                links.forEach(function (l) { l.classList.remove('is-active'); });
+                Object.keys(heads).forEach(function (k) { heads[k].classList.remove('is-active'); });
+                if (map[id]) map[id].classList.add('is-active');
+                if (heads[id]) heads[id].classList.add('is-active');
+            }
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) setActive(entry.target.id);
+                    });
+                }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+                Object.keys(map).forEach(function (id) {
+                    observer.observe(document.getElementById(id));
+                });
+            }
+        })();
+    </script>
+
+    <script>
+        (function(){
+            var links=document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+            function syncActive(){
+                var hash=window.location.hash;
+                links.forEach(function(link){link.classList.remove('active');link.removeAttribute('aria-current')});
+                var target=hash==='#cara-hapus-akun'
+                    ? document.querySelector('.desktop-nav a[href$="#cara-hapus-akun"], .mobile-nav a[href$="#cara-hapus-akun"]')
+                    : document.querySelector('.desktop-nav a[href="privacy-policy.html"], .mobile-nav a[href="privacy-policy.html"]');
+                if(target){target.classList.add('active');target.setAttribute('aria-current','page')}
+            }
+            links.forEach(function(link){link.addEventListener('click',function(){if(link.href.indexOf('#cara-hapus-akun')!==-1)syncActive()})});
+            window.addEventListener('hashchange',syncActive);
+            syncActive();
+        })();
+    </script>
+</body>
+</html>
