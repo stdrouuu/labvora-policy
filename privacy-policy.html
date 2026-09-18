@@ -159,6 +159,12 @@
         .desktop-nav a.active,.mobile-nav a.active{color:#3A9DA6;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
         .nav-button{display:inline-flex!important;align-items:center;min-height:42px;padding:0 18px;color:#fff!important;background:#3A9DA6!important;border-radius:999px;font-weight:600!important;transition:background .2s ease}
         .nav-button:hover{background:#2a7d85!important}
+        .lang-switcher-wrap{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid #e4e8ec;border-radius:999px;background:#fcfdfe;transition:border-color .2s,box-shadow .2s}
+        .lang-switcher-wrap:hover,.lang-switcher-wrap:focus-within{border-color:#3A9DA6;box-shadow:0 2px 8px rgba(58,157,166,.15)}
+        .lang-switcher-wrap svg{width:16px;height:16px;color:#3A9DA6;flex-shrink:0}
+        .lang-select{font-family:inherit;font-size:.84rem;font-weight:600;color:#101828;background:transparent;border:none;outline:none;cursor:pointer;padding:4px 2px}
+        .lang-select option{font-size:.88rem;font-weight:500;color:#101828;background:#fff}
+        .mobile-lang-row{display:flex;align-items:center;justify-content:space-between;padding:12px 4px;border-bottom:1px solid #e4e8ec;font-weight:600;font-size:.92rem}
         .menu-button{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:0;border-radius:0;background:transparent;cursor:pointer}
         .menu-button span,.menu-button span:before,.menu-button span:after{display:block;width:22px;height:2px;background:#3A9DA6;transition:none}
         .menu-button span{position:relative}.menu-button span:before,.menu-button span:after{content:"";position:absolute;left:0}.menu-button span:before{top:-7px}.menu-button span:after{top:7px}
@@ -209,7 +215,7 @@
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased selection:bg-gray-200">
-    <a class="skip-link" href="#konten">Lewati ke konten</a>
+    <a class="skip-link" href="#konten" data-i18n="pp_skip_link">Lewati ke konten</a>
 
     <!-- Navbar -->
     <header class="site-header">
@@ -221,18 +227,29 @@
                 width="152"
                 height="58"
             /></a>
-            <nav class="desktop-nav" aria-label="Navigasi utama">
-                <a href="index.html">Beranda</a
-                ><a class="active" href="privacy-policy.html">Kebijakan Privasi</a
-                ><a href="privacy-policy.html#cara-hapus-akun">Hapus akun</a
-                ><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html" data-i18n="nav_home">Home</a
+                ><a class="active" href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a
+                ><a href="privacy-policy.html#cara-hapus-akun" data-i18n="nav_delete">Delete Account</a
+                ><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id" data-i18n="nav_contact">Contact Us</a>
+                <div class="lang-switcher-wrap" title="Ganti Bahasa / Change Language">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <select class="lang-select" id="lang-select-desktop" aria-label="Pilih Bahasa / Select Language">
+                      <option value="en">EN</option>
+                      <option value="id">ID</option>
+                    </select>
+                </div>
             </nav>
             <button
               class="menu-button"
               type="button"
               aria-expanded="false"
               aria-controls="mobile-menu"
-              aria-label="Buka menu"
+              aria-label="Open menu"
             >
               <span></span>
             </button>
@@ -240,21 +257,37 @@
         <nav
           class="mobile-nav"
           id="mobile-menu"
-          aria-label="Navigasi seluler"
+          aria-label="Mobile navigation"
           hidden
           style="position:fixed;z-index:39;inset:74px 0 auto;padding:18px 24px 24px;background:#fff;border-bottom:1px solid var(--line,#e4e8ec);box-shadow:0 18px 35px rgba(16,24,40,.1);"
         >
-            <a href="index.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;">Beranda</a
-            ><a class="active" href="privacy-policy.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;">Kebijakan Privasi</a
-            ><a href="privacy-policy.html#cara-hapus-akun" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;">Hapus akun</a
-            ><a href="mailto:brandon.412024022@civitas.ukrida.ac.id" style="display:block;margin-top:14px;padding:13px 4px;color:#fff;text-align:center;background:var(--teal,#3A9DA6);border:0;border-radius:9px;font-weight:600;">Hubungi Kami</a>
+            <div class="mobile-lang-row">
+              <span style="display:flex;align-items:center;gap:8px;color:#101828;">
+                <svg style="width:18px;height:18px;color:#3A9DA6;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                <span data-i18n="lang_label">Bahasa / Language</span>
+              </span>
+              <div class="lang-switcher-wrap">
+                <select class="lang-select" id="lang-select-mobile" aria-label="Pilih Bahasa / Select Language">
+                  <option value="en">English (EN)</option>
+                  <option value="id">Indonesia (ID)</option>
+                </select>
+              </div>
+            </div>
+            <a href="index.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;" data-i18n="nav_home">Home</a
+            ><a class="active" href="privacy-policy.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;" data-i18n="nav_privacy">Privacy Policy</a
+            ><a href="privacy-policy.html#cara-hapus-akun" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line,#e4e8ec);font-weight:600;" data-i18n="nav_delete">Delete Account</a
+            ><a href="mailto:brandon.412024022@civitas.ukrida.ac.id" style="display:block;margin-top:14px;padding:13px 4px;color:#fff;text-align:center;background:var(--teal,#3A9DA6);border:0;border-radius:9px;font-weight:600;" data-i18n="nav_contact">Contact Us</a>
         </nav>
     </header>
 
     <!-- Top Header -->
     <header id="atas" class="max-w-6xl mx-auto px-9 pt-10 pb-6 border-b border-gray-100">
-        <h1 class="text-3xl font-bold text-black tracking-tight">Kebijakan Privasi &amp; Penghapusan Akun Labvōra</h1>
-        <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: 10 September 2026</p>
+        <h1 class="text-3xl font-bold text-black tracking-tight" data-i18n="pp_header_title">Kebijakan Privasi &amp; Penghapusan Akun Labvōra</h1>
+        <p class="text-sm text-gray-500 mt-2" data-i18n="pp_header_updated">Terakhir diperbarui: 10 September 2026</p>
     </header>
 
     <main id="konten" class="max-w-6xl mx-auto px-9 pt-2 pb-8">
@@ -265,30 +298,30 @@
 
         <!-- Breadcrumbs -->
         <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-gray-400 mb-8">
-            <a href="index.html#atas" class="hover:text-gray-700">Beranda</a>
+            <a href="index.html#atas" class="hover:text-gray-700" data-i18n="pp_bc_home">Beranda</a>
             <span aria-hidden="true">&rsaquo;</span>
-            <span class="text-gray-800 font-medium" aria-current="page">Kebijakan Privasi</span>
+            <span class="text-gray-800 font-medium" aria-current="page" data-i18n="pp_bc_current">Kebijakan Privasi</span>
         </nav>
 
         <!-- Mobile Table of Contents -->
         <details class="toc-mobile lg:hidden mb-6 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
             <summary class="cursor-pointer font-bold text-gray-800 flex items-center justify-between gap-3">
-                <span>Daftar isi<span class="toc-current" data-toc-current></span></span>
+                <span><span data-i18n="pp_toc_title">Daftar isi</span><span class="toc-current" data-toc-current></span></span>
             </summary>
             <nav class="mt-3 text-gray-600" aria-label="Daftar isi">
-                <a href="#pendahuluan" data-toc class="toc-link block hover:text-black">1. Pendahuluan</a>
-                <a href="#informasi-dikumpulkan" data-toc class="toc-link block hover:text-black">2. Informasi yang Kami Kumpulkan</a>
-                <a href="#data-diri" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">2.1. Identitas &amp; Data Diri</a>
-                <a href="#data-akun" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">2.2. Data Akun &amp; Aktivitas</a>
-                <a href="#tujuan-penggunaan" data-toc class="toc-link block hover:text-black">3. Tujuan Penggunaan Informasi</a>
-                <a href="#keamanan-data" data-toc class="toc-link block hover:text-black">4. Penyimpanan &amp; Keamanan Data</a>
-                <a href="#pembagian-data" data-toc class="toc-link block hover:text-black">5. Pembagian Data ke Pihak Ketiga</a>
-                <a href="#hak-pengguna" data-toc class="toc-link block hover:text-black">6. Hak Pengguna &amp; Penghapusan Akun</a>
-                <a href="#cara-hapus-akun" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.1. Cara Menghapus Akun</a>
-                <a href="#data-dihapus" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.2. Data yang Dihapus</a>
-                <a href="#retensi-cadangan" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.3. Retensi &amp; Cadangan</a>
-                <a href="#bantuan-kontak" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black">6.4. Bantuan Support</a>
-                <a href="#persetujuan" data-toc class="toc-link block hover:text-black">7. Persetujuan Kebijakan</a>
+                <a href="#pendahuluan" data-toc class="toc-link block hover:text-black" data-i18n="toc_1">1. Pendahuluan</a>
+                <a href="#informasi-dikumpulkan" data-toc class="toc-link block hover:text-black" data-i18n="toc_2">2. Informasi yang Kami Kumpulkan</a>
+                <a href="#data-diri" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black" data-i18n="toc_2_1">2.1. Identitas &amp; Data Diri</a>
+                <a href="#data-akun" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black" data-i18n="toc_2_2">2.2. Data Akun &amp; Aktivitas</a>
+                <a href="#tujuan-penggunaan" data-toc class="toc-link block hover:text-black" data-i18n="toc_3">3. Tujuan Penggunaan Informasi</a>
+                <a href="#keamanan-data" data-toc class="toc-link block hover:text-black" data-i18n="toc_4">4. Penyimpanan &amp; Keamanan Data</a>
+                <a href="#pembagian-data" data-toc class="toc-link block hover:text-black" data-i18n="toc_5">5. Pembagian Data ke Pihak Ketiga</a>
+                <a href="#hak-pengguna" data-toc class="toc-link block hover:text-black" data-i18n="toc_6">6. Hak Pengguna &amp; Penghapusan Akun</a>
+                <a href="#cara-hapus-akun" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black" data-i18n="toc_6_1">6.1. Cara Menghapus Akun</a>
+                <a href="#data-dihapus" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black" data-i18n="toc_6_2">6.2. Data yang Dihapus</a>
+                <a href="#retensi-cadangan" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black" data-i18n="toc_6_3">6.3. Retensi &amp; Cadangan</a>
+                <a href="#bantuan-kontak" data-toc class="toc-link block pl-4 text-gray-500 hover:text-black" data-i18n="toc_6_4">6.4. Bantuan Support</a>
+                <a href="#persetujuan" data-toc class="toc-link block hover:text-black" data-i18n="toc_7">7. Persetujuan Kebijakan</a>
             </nav>
         </details>
 
@@ -300,39 +333,39 @@
                 
                 <!-- Main Header inside article -->
                 <div>
-                    <h2 class="text-3xl font-bold text-black tracking-tight mb-4">Kebijakan Privasi</h2>
-                    <p class="text-gray-600 text-base leading-relaxed">
+                    <h2 class="text-3xl font-bold text-black tracking-tight mb-4" data-i18n="pp_intro_heading">Kebijakan Privasi</h2>
+                    <p class="text-gray-600 text-base leading-relaxed" data-i18n="pp_intro_desc">
                         Di aplikasi Labvōra ("kami"), kami sangat menghargai privasi Anda dan berkomitmen untuk melindungi informasi pribadi Anda. Kebijakan Privasi ini menjelaskan praktik kami mengenai pengumpulan, penggunaan, penyimpanan, dan perlindungan data Anda saat mengakses aplikasi dan layanan kami. Mohon baca dokumen ini dengan seksama untuk memahami bagaimana kami mengelola informasi Anda.
                     </p>
                 </div>
 
                 <!-- 1. Pendahuluan -->
                 <section id="pendahuluan" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">1. Pendahuluan</h3>
-                    <p>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec1_heading">1. Pendahuluan</h3>
+                    <p data-i18n="pp_sec1_body">
                         Selamat datang di aplikasi Labvōra. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi pengguna saat mendaftar dan menggunakan layanan penjadwalan, reservasi, dan pengelolaan aktivitas di aplikasi. Kami menyarankan Anda untuk membaca dokumen ini secara seksama agar memahami bagaimana informasi Anda dikelola.
                     </p>
                 </section>
 
                 <!-- 2. Informasi yang Kami Kumpulkan -->
                 <section id="informasi-dikumpulkan" class="scroll-mt-24 space-y-4 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">2. Informasi yang Kami Kumpulkan</h3>
-                    <p>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec2_heading">2. Informasi yang Kami Kumpulkan</h3>
+                    <p data-i18n="pp_sec2_body">
                         Saat Anda membuat akun dan menggunakan aplikasi Labvōra, kami mengumpulkan beberapa data pribadi yang Anda berikan secara sadar, antara lain:
                     </p>
 
                     <!-- 2.1 Personal Data -->
                     <div id="data-diri" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">2.1. Identitas &amp; Data Diri</h4>
-                        <p>
+                        <h4 class="text-base font-bold text-black" data-i18n="pp_sec2_1_heading">2.1. Identitas &amp; Data Diri</h4>
+                        <p data-i18n="pp_sec2_1_body">
                             Kami mengumpulkan Nama Lengkap, Username, Jenis Kelamin, Tanggal Lahir, Alamat Email, Nomor Telepon (+62), serta Alamat Tempat Tinggal lengkap Anda untuk keperluan administrasi akun, personalisasi layanan, dan pengelolaan jadwal Anda.
                         </p>
                     </div>
 
                     <!-- 2.2 Account & Activity -->
                     <div id="data-akun" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">2.2. Data Akun &amp; Aktivitas</h4>
-                        <p>
+                        <h4 class="text-base font-bold text-black" data-i18n="pp_sec2_2_heading">2.2. Data Akun &amp; Aktivitas</h4>
+                        <p data-i18n="pp_sec2_2_body">
                             Meliputi kata sandi (password) yang tersimpan secara terenkripsi dan token otentikasi, serta riwayat reservasi, jadwal, dan aktivitas yang Anda simpan di aplikasi.
                         </p>
                     </div>
@@ -340,86 +373,86 @@
 
                 <!-- 3. Tujuan Penggunaan Informasi -->
                 <section id="tujuan-penggunaan" class="scroll-mt-24 space-y-4 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">3. Tujuan Penggunaan Informasi</h3>
-                    <p>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec3_heading">3. Tujuan Penggunaan Informasi</h3>
+                    <p data-i18n="pp_sec3_body">
                         Data pribadi yang kami kumpulkan digunakan secara khusus untuk keperluan operasional dan peningkatan pengalaman Anda dalam menggunakan aplikasi:
                     </p>
                     <ul class="list-disc list-inside space-y-2 pl-2 text-gray-700">
-                        <li>Memproses pendaftaran dan verifikasi otentikasi akun pengguna.</li>
-                        <li>Mengatur dan mengonfirmasi jadwal reservasi dan kunjungan yang Anda buat melalui aplikasi.</li>
-                        <li>Menampilkan riwayat aktivitas, jadwal, dan dokumen Anda secara pribadi dan aman.</li>
-                        <li>Menghubungi Anda terkait pengingat jadwal, pembatalan, atau pembaruan status pesanan.</li>
+                        <li data-i18n="pp_sec3_li1">Memproses pendaftaran dan verifikasi otentikasi akun pengguna.</li>
+                        <li data-i18n="pp_sec3_li2">Mengatur dan mengonfirmasi jadwal reservasi dan kunjungan yang Anda buat melalui aplikasi.</li>
+                        <li data-i18n="pp_sec3_li3">Menampilkan riwayat aktivitas, jadwal, dan dokumen Anda secara pribadi dan aman.</li>
+                        <li data-i18n="pp_sec3_li4">Menghubungi Anda terkait pengingat jadwal, pembatalan, atau pembaruan status pesanan.</li>
                     </ul>
                 </section>
 
                 <!-- 4. Penyimpanan & Keamanan Data -->
                 <section id="keamanan-data" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">4. Penyimpanan &amp; Keamanan Data</h3>
-                    <p>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec4_heading">4. Penyimpanan &amp; Keamanan Data</h3>
+                    <p data-i18n="pp_sec4_body">
                         Kami menerapkan standar enkripsi dan sistem keamanan basis data untuk melindungi informasi pribadi Anda dari akses tidak sah, kebocoran, atau pengubahan. Seluruh data akun dan data aktivitas disimpan dalam server aman dengan akses terbatas dan pengelolaan yang bertanggung jawab.
                     </p>
                 </section>
 
                 <!-- 5. Pembagian Data ke Pihak Ketiga -->
                 <section id="pembagian-data" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">5. Pembagian Data ke Pihak Ketiga</h3>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec5_heading">5. Pembagian Data ke Pihak Ketiga</h3>
                     <p>
-                        Labvōra <strong>TIDAK AKAN PERNAH</strong> menjual, menyewakan, atau membagikan data pribadi Anda kepada pihak ketiga untuk kepentingan komersial atau iklan. Data Anda hanya dibagikan secara terbatas kepada pihak penyelenggara / tempat mitra yang terkait dengan reservasi yang Anda buat, dan hanya sejauh diperlukan untuk menjalankan layanan.
+                        <span data-i18n="pp_sec5_body_1">Labvōra </span><strong data-i18n="pp_sec5_body_never">TIDAK AKAN PERNAH</strong><span data-i18n="pp_sec5_body_2"> menjual, menyewakan, atau membagikan data pribadi Anda kepada pihak ketiga untuk kepentingan komersial atau iklan. Data Anda hanya dibagikan secara terbatas kepada pihak penyelenggara / tempat mitra yang terkait dengan reservasi yang Anda buat, dan hanya sejauh diperlukan untuk menjalankan layanan.</span>
                     </p>
                 </section>
 
                 <!-- 6. Hak Pengguna & Kebijakan Penghapusan Akun -->
                 <section id="hak-pengguna" class="scroll-mt-24 space-y-4 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">6. Hak Pengguna &amp; Kebijakan Penghapusan Akun</h3>
-                    <p>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec6_heading">6. Hak Pengguna &amp; Kebijakan Penghapusan Akun</h3>
+                    <p data-i18n="pp_sec6_body">
                         Kendali atas akun dan data pribadi Anda adalah prioritas utama kami. Sebagai pemilik data pribadi, Anda memiliki hak penuh untuk mengendalikan data Anda:
                     </p>
 
                     <!-- 6.1 Cara Menghapus Akun -->
                     <div id="cara-hapus-akun" class="scroll-mt-24 space-y-2 bg-gray-50 border border-gray-200 rounded-lg p-5 my-4">
-                        <h4 class="text-base font-bold text-black">6.1. Cara Menghapus Akun di Aplikasi</h4>
-                        <p class="text-xs text-gray-600 mb-2">
+                        <h4 class="text-base font-bold text-black" data-i18n="pp_sec6_1_heading">6.1. Cara Menghapus Akun di Aplikasi</h4>
+                        <p class="text-xs text-gray-600 mb-2" data-i18n="pp_sec6_1_note">
                             Anda dapat menghapus akun secara permanen langsung melalui menu Profil di aplikasi Labvōra dengan langkah-langkah berikut:
                         </p>
                         <ol class="list-decimal list-inside space-y-1.5 text-xs text-gray-800 font-medium">
-                            <li>Buka aplikasi Labvōra dan masuk ke akun Anda.</li>
-                            <li>Masuk ke menu <strong>Profil</strong>.</li>
-                            <li>Gulir ke bawah dan tekan tombol <strong class="text-red-600">HAPUS AKUN</strong>.</li>
-                            <li>Tekan <strong>Lanjutkan</strong> pada dialog peringatan pertama.</li>
-                            <li>Tekan <strong class="text-red-600">Ya, Hapus Akun</strong> pada dialog konfirmasi terakhir.</li>
+                            <li data-i18n="pp_sec6_1_step1_1">Buka aplikasi Labvōra dan masuk ke akun Anda.</li>
+                            <li><span data-i18n="pp_sec6_1_step2_1">Masuk ke menu </span><strong data-i18n="pp_sec6_1_step2_2">Profil</strong><span data-i18n="pp_sec6_1_step2_3">.</span></li>
+                            <li><span data-i18n="pp_sec6_1_step3_1">Gulir ke bawah dan tekan tombol </span><strong class="text-red-600" data-i18n="pp_sec6_1_step3_2">HAPUS AKUN</strong><span data-i18n="pp_sec6_1_step3_3">.</span></li>
+                            <li><span data-i18n="pp_sec6_1_step4_1">Tekan </span><strong data-i18n="pp_sec6_1_step4_2">Lanjutkan</strong><span data-i18n="pp_sec6_1_step4_3"> pada dialog peringatan pertama.</span></li>
+                            <li><span data-i18n="pp_sec6_1_step5_1">Tekan </span><strong class="text-red-600" data-i18n="pp_sec6_1_step5_2">Ya, Hapus Akun</strong><span data-i18n="pp_sec6_1_step5_3"> pada dialog konfirmasi terakhir.</span></li>
                         </ol>
                     </div>
 
                     <!-- 6.2 Data yang Dihapus -->
                     <div id="data-dihapus" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.2. Data yang Akan Dihapus</h4>
-                        <p>
+                        <h4 class="text-base font-bold text-black" data-i18n="pp_sec6_2_heading">6.2. Data yang Akan Dihapus</h4>
+                        <p data-i18n="pp_sec6_2_body">
                             Setelah Anda mengonfirmasi penghapusan, seluruh data identitas, kontak, domisili, riwayat jadwal dan aktivitas, serta kredensial akun akan dihapus secara permanen dan tidak dapat dipulihkan.
                         </p>
                     </div>
 
                     <!-- 6.3 Retensi & Cadangan -->
                     <div id="retensi-cadangan" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.3. Penyimpanan Sementara &amp; Retensi</h4>
-                        <p>
+                        <h4 class="text-base font-bold text-black" data-i18n="pp_sec6_3_heading">6.3. Penyimpanan Sementara &amp; Retensi</h4>
+                        <p data-i18n="pp_sec6_3_body">
                             Labvōra tidak menyimpan data pribadi Anda untuk kepentingan komersial setelah akun dihapus. Salinan terenkripsi yang tersisa di sistem backup akan terhapus otomatis maksimal 24 bulan sesuai jadwal rotasi backup.
                         </p>
                     </div>
 
                     <!-- 6.4 Bantuan Support -->
                     <div id="bantuan-kontak" class="scroll-mt-24 space-y-2 pt-2">
-                        <h4 class="text-base font-bold text-black">6.4. Konfirmasi Penghapusan &amp; Bantuan</h4>
+                        <h4 class="text-base font-bold text-black" data-i18n="pp_sec6_4_heading">6.4. Konfirmasi Penghapusan &amp; Bantuan</h4>
                         <p>
-                            Jika mengalami kendala saat menghapus akun di aplikasi, Anda dapat menghubungi kami melalui email di 
-                            <a href="mailto:brandon.412024022@civitas.ukrida.ac.id" class="text-[#3A9DA6] underline font-medium">brandon.412024022@civitas.ukrida.ac.id</a>.
+                            <span data-i18n="pp_sec6_4_body_1">Jika mengalami kendala saat menghapus akun di aplikasi, Anda dapat menghubungi kami melalui email di </span>
+                            <a href="mailto:brandon.412024022@civitas.ukrida.ac.id" class="text-[#3A9DA6] underline font-medium">brandon.412024022@civitas.ukrida.ac.id</a><span data-i18n="pp_sec6_4_body_2">.</span>
                         </p>
                     </div>
                 </section>
 
                 <!-- 7. Persetujuan Kebijakan -->
                 <section id="persetujuan" class="scroll-mt-24 space-y-3 pt-4">
-                    <h3 class="text-xl font-bold text-black tracking-tight">7. Persetujuan Kebijakan</h3>
-                    <p>
+                    <h3 class="text-xl font-bold text-black tracking-tight" data-i18n="pp_sec7_heading">7. Persetujuan Kebijakan</h3>
+                    <p data-i18n="pp_sec7_body">
                         Dengan mencentang kotak persetujuan pada halaman pendaftaran akun atau menggunakan layanan kami, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh ketentuan dalam Kebijakan Privasi &amp; Penghapusan Akun Labvōra ini.
                     </p>
                 </section>
@@ -430,35 +463,35 @@
             <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start text-xs text-gray-600 hidden lg:block">
                 <nav id="toc" class="space-y-3 border-l border-gray-100 pl-4">
                     <div>
-                        <a href="#pendahuluan" data-toc class="toc-link hover:text-black transition block text-gray-700">1. Pendahuluan</a>
+                        <a href="#pendahuluan" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_1">1. Pendahuluan</a>
                     </div>
                     <div>
-                        <a href="#informasi-dikumpulkan" data-toc class="toc-link hover:text-black transition block text-gray-700">2. Informasi yang Kami Kumpulkan</a>
+                        <a href="#informasi-dikumpulkan" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_2">2. Informasi yang Kami Kumpulkan</a>
                         <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
-                            <a href="#data-diri" data-toc class="toc-link hover:text-black block transition text-gray-500">2.1. Identitas &amp; Data Diri</a>
-                            <a href="#data-akun" data-toc class="toc-link hover:text-black block transition text-gray-500">2.2. Data Akun &amp; Aktivitas</a>
+                            <a href="#data-diri" data-toc class="toc-link hover:text-black block transition text-gray-500" data-i18n="toc_2_1">2.1. Identitas &amp; Data Diri</a>
+                            <a href="#data-akun" data-toc class="toc-link hover:text-black block transition text-gray-500" data-i18n="toc_2_2">2.2. Data Akun &amp; Aktivitas</a>
                         </div>
                     </div>
                     <div>
-                        <a href="#tujuan-penggunaan" data-toc class="toc-link hover:text-black transition block text-gray-700">3. Tujuan Penggunaan Informasi</a>
+                        <a href="#tujuan-penggunaan" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_3">3. Tujuan Penggunaan Informasi</a>
                     </div>
                     <div>
-                        <a href="#keamanan-data" data-toc class="toc-link hover:text-black transition block text-gray-700">4. Penyimpanan &amp; Keamanan Data</a>
+                        <a href="#keamanan-data" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_4">4. Penyimpanan &amp; Keamanan Data</a>
                     </div>
                     <div>
-                        <a href="#pembagian-data" data-toc class="toc-link hover:text-black transition block text-gray-700">5. Pembagian Data ke Pihak Ketiga</a>
+                        <a href="#pembagian-data" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_5">5. Pembagian Data ke Pihak Ketiga</a>
                     </div>
                     <div>
-                        <a href="#hak-pengguna" data-toc class="toc-link hover:text-black transition block text-gray-700">6. Hak Pengguna &amp; Penghapusan Akun</a>
+                        <a href="#hak-pengguna" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_6">6. Hak Pengguna &amp; Penghapusan Akun</a>
                         <div class="ml-3 mt-1.5 space-y-1.5 border-l border-gray-200 pl-3">
-                            <a href="#cara-hapus-akun" data-toc class="toc-link hover:text-black block transition text-gray-500">6.1. Cara Menghapus Akun</a>
-                            <a href="#data-dihapus" data-toc class="toc-link hover:text-black block transition text-gray-500">6.2. Data yang Dihapus</a>
-                            <a href="#retensi-cadangan" data-toc class="toc-link hover:text-black block transition text-gray-500">6.3. Retensi &amp; Cadangan</a>
-                            <a href="#bantuan-kontak" data-toc class="toc-link hover:text-black block transition text-gray-500">6.4. Bantuan Support</a>
+                            <a href="#cara-hapus-akun" data-toc class="toc-link hover:text-black block transition text-gray-500" data-i18n="toc_6_1">6.1. Cara Menghapus Akun</a>
+                            <a href="#data-dihapus" data-toc class="toc-link hover:text-black block transition text-gray-500" data-i18n="toc_6_2">6.2. Data yang Dihapus</a>
+                            <a href="#retensi-cadangan" data-toc class="toc-link hover:text-black block transition text-gray-500" data-i18n="toc_6_3">6.3. Retensi &amp; Cadangan</a>
+                            <a href="#bantuan-kontak" data-toc class="toc-link hover:text-black block transition text-gray-500" data-i18n="toc_6_4">6.4. Bantuan Support</a>
                         </div>
                     </div>
                     <div>
-                        <a href="#persetujuan" data-toc class="toc-link hover:text-black transition block text-gray-700">7. Persetujuan Kebijakan</a>
+                        <a href="#persetujuan" data-toc class="toc-link hover:text-black transition block text-gray-700" data-i18n="toc_7">7. Persetujuan Kebijakan</a>
                     </div>
                 </nav>
             </aside>
@@ -475,12 +508,12 @@
             <div class="footer-main">
                 <div>
                     <a class="brand" href="index.html#atas"><img class="footer-logo" src="assets/horiz.png" alt="Labvōra" width="235" height="112"></a>
-                    <p class="footer-copy">Kelola jadwal, pantau aktivitas, dan kendalikan data privasi Anda dengan aman.</p>
+                    <p class="footer-copy" data-i18n="footer_copy_policy">Kelola jadwal, pantau aktivitas, dan kendalikan data privasi Anda dengan aman.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 Labvōra. Hak cipta dilindungi undang-undang.</span>
-                <span>Terakhir diperbarui: 14 September 2026</span>
+                <span data-i18n="footer_copyright">© 2026 Labvōra. Hak cipta dilindungi undang-undang.</span>
+                <span data-i18n="footer_last_updated">Terakhir diperbarui: 14 September 2026</span>
             </div>
         </div>
         <div class="footer-watermark" aria-hidden="true"><img src="assets/horiz.png" alt=""></div>
@@ -736,6 +769,15 @@
             });
             if (mobileToc) mobileToc.addEventListener('toggle', syncSpacer);
             window.addEventListener('load', function () { syncSpacer(); updateActive(); });
+            window.addEventListener('labvora:langchange', function () {
+                for (var key in entries) {
+                    if (entries[key].head) {
+                        entries[key].label = entries[key].head.textContent.trim();
+                    }
+                }
+                syncSpacer();
+                updateActive();
+            });
 
             syncSpacer();
             var initial = window.location.hash.slice(1);
@@ -762,6 +804,10 @@
             window.addEventListener('hashchange',syncActive);
             syncActive();
         })();
+    </script>
+    <script src="assets/translations.js"></script>
+    <script>
+        initLabvoraLanguage();
     </script>
 </body>
 </html>

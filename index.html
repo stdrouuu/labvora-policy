@@ -194,6 +194,53 @@
       .nav-button:hover {
         background: var(--teal-dark) !important;
       }
+      .lang-switcher-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fcfdfe;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .lang-switcher-wrap:hover,
+      .lang-switcher-wrap:focus-within {
+        border-color: var(--teal);
+        box-shadow: 0 2px 8px rgba(58, 157, 166, 0.15);
+      }
+      .lang-switcher-wrap svg {
+        width: 16px;
+        height: 16px;
+        color: var(--teal);
+        flex-shrink: 0;
+      }
+      .lang-select {
+        font-family: inherit;
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: var(--ink);
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 4px 2px;
+      }
+      .lang-select option {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--ink);
+        background: #fff;
+      }
+      .mobile-lang-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 4px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 600;
+        font-size: 0.92rem;
+      }
       .menu-button {
         display: none;
         width: 44px;
@@ -1774,18 +1821,29 @@
             width="152"
             height="58"
         /></a>
-        <nav class="desktop-nav" aria-label="Navigasi utama">
-          <a class="active" href="index.html">Beranda</a
-          ><a href="privacy-policy.html">Kebijakan Privasi</a
-          ><a href="privacy-policy.html#cara-hapus-akun">Hapus akun</a
-          ><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id">Hubungi Kami</a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a class="active" href="index.html" data-i18n="nav_home">Home</a
+          ><a href="privacy-policy.html" data-i18n="nav_privacy">Privacy Policy</a
+          ><a href="privacy-policy.html#cara-hapus-akun" data-i18n="nav_delete">Delete Account</a
+          ><a class="nav-button" href="mailto:brandon.412024022@civitas.ukrida.ac.id" data-i18n="nav_contact">Contact Us</a>
+          <div class="lang-switcher-wrap" title="Ganti Bahasa / Change Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <select class="lang-select" id="lang-select-desktop" aria-label="Pilih Bahasa / Select Language">
+              <option value="en">EN</option>
+              <option value="id">ID</option>
+            </select>
+          </div>
         </nav>
         <button
           class="menu-button"
           type="button"
           aria-expanded="false"
           aria-controls="mobile-menu"
-          aria-label="Buka menu"
+          aria-label="Open menu"
         >
           <span></span>
         </button>
@@ -1793,14 +1851,30 @@
       <nav
         class="mobile-nav"
         id="mobile-menu"
-        aria-label="Navigasi seluler"
+        aria-label="Mobile navigation"
         hidden
         style="position:fixed;z-index:39;inset:74px 0 auto;padding:18px 24px 24px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 18px 35px rgba(16,24,40,.1);"
       >
-        <a class="active" href="index.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;">Beranda</a
-        ><a href="privacy-policy.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;">Kebijakan Privasi</a
-        ><a href="privacy-policy.html#cara-hapus-akun" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;">Hapus akun</a
-        ><a href="mailto:brandon.412024022@civitas.ukrida.ac.id" style="display:block;margin-top:14px;padding:13px 4px;color:#fff;text-align:center;background:var(--teal);border:0;border-radius:9px;font-weight:600;">Hubungi Kami</a>
+        <div class="mobile-lang-row">
+          <span style="display:flex;align-items:center;gap:8px;color:var(--ink);">
+            <svg style="width:18px;height:18px;color:var(--teal);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span data-i18n="lang_label">Bahasa / Language</span>
+          </span>
+          <div class="lang-switcher-wrap">
+            <select class="lang-select" id="lang-select-mobile" aria-label="Pilih Bahasa / Select Language">
+              <option value="en">English (EN)</option>
+              <option value="id">Indonesia (ID)</option>
+            </select>
+          </div>
+        </div>
+        <a class="active" href="index.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;" data-i18n="nav_home">Home</a
+        ><a href="privacy-policy.html" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;" data-i18n="nav_privacy">Privacy Policy</a
+        ><a href="privacy-policy.html#cara-hapus-akun" style="display:block;padding:13px 4px;border-bottom:1px solid var(--line);font-weight:600;" data-i18n="nav_delete">Delete Account</a
+        ><a href="mailto:brandon.412024022@civitas.ukrida.ac.id" style="display:block;margin-top:14px;padding:13px 4px;color:#fff;text-align:center;background:var(--teal);border:0;border-radius:9px;font-weight:600;" data-i18n="nav_contact">Contact Us</a>
       </nav>
     </header>
 
@@ -1808,16 +1882,16 @@
       <section class="hero" id="atas">
         <div class="container hero-shell">
           <div class="hero-copy reveal">
-            <h1>Atur jadwal dengan <span>Labvōra !</span></h1>
-            <p>
+            <h1><span data-i18n="hero_title_prefix">Atur jadwal dengan </span><span>Labvōra !</span></h1>
+            <p data-i18n="hero_desc">
               Pilih layanan, jadwalkan kunjungan, pantau progres, dan akses
               dokumen dalam satu aplikasi.
             </p>
             <div class="actions">
               <a class="button button-primary" href="#cara-kerja"
-                >Lihat cara kerja
+                ><span data-i18n="hero_btn_workflow">Lihat cara kerja</span>
                 <svg aria-hidden="true"><use href="#icon-arrow" /></svg></a
-              ><a class="button button-secondary" href="mailto:brandon.412024022@civitas.ukrida.ac.id"
+              ><a class="button button-secondary" href="mailto:brandon.412024022@civitas.ukrida.ac.id" data-i18n="hero_btn_contact"
                 >Hubungi kami</a
               >
             </div>
@@ -1825,6 +1899,7 @@
           <div
             class="hero-showcase reveal"
             aria-label="Pratinjau aplikasi Labvōra pada ponsel Android"
+            data-i18n-aria="hero_device_label"
           >
             <div class="device hero-device">
               <div class="device-screen">
@@ -1839,31 +1914,31 @@
                 <div class="fake-body">
                   <div class="fake-head">
                     <div>
-                      <small>Selamat pagi,</small><strong>Alya Putri</strong>
+                      <small data-i18n="mock_greeting">Selamat pagi,</small><strong>Alya Putri</strong>
                     </div>
                     <span class="avatar">AP</span>
                   </div>
-                  <div class="fake-search">Cari layanan atau paket</div>
+                  <div class="fake-search" data-i18n="mock_search_placeholder">Cari layanan atau paket</div>
                   <div class="fake-card">
-                    <small>Jadwal berikutnya · Besok</small
-                    ><strong>Paket layanan A</strong
-                    ><span>09.30 WIB · Tempat Mitra Resmi</span>
+                    <small data-i18n="mock_next_schedule">Jadwal berikutnya · Besok</small
+                    ><strong data-i18n="mock_package_a">Paket layanan A</strong
+                    ><span data-i18n="mock_partner_place">09.30 WIB · Tempat Mitra Resmi</span>
                   </div>
-                  <div class="fake-label">Mau apa hari ini?</div>
+                  <div class="fake-label" data-i18n="mock_what_today">Mau apa hari ini?</div>
                   <div class="fake-actions">
-                    <div class="fake-action"><i>⌕</i>Cari</div>
-                    <div class="fake-action"><i>□</i>Buat janji</div>
-                    <div class="fake-action"><i>✓</i>Lihat dokumen</div>
+                    <div class="fake-action"><i>⌕</i><span data-i18n="mock_btn_search">Cari</span></div>
+                    <div class="fake-action"><i>□</i><span data-i18n="mock_btn_book">Buat janji</span></div>
+                    <div class="fake-action"><i>✓</i><span data-i18n="mock_btn_docs">Lihat dokumen</span></div>
                   </div>
-                  <div class="fake-label">Proses pesanan</div>
+                  <div class="fake-label" data-i18n="mock_order_process">Proses pesanan</div>
                   <div class="fake-progress">
-                    <b>Pesanan sedang diproses</b>
+                    <b data-i18n="mock_order_processing">Pesanan sedang diproses</b>
                     <div class="line"></div>
                   </div>
                 </div>
                 <div class="fake-nav">
-                  <b>Beranda</b><span>Pesanan</span><span>Dokumen</span
-                  ><span>Profil</span>
+                  <b data-i18n="mock_nav_home">Beranda</b><span data-i18n="mock_nav_orders">Pesanan</span><span data-i18n="mock_nav_docs">Dokumen</span
+                  ><span data-i18n="mock_nav_profile">Profil</span>
                 </div>
               </div>
             </div>
@@ -1874,13 +1949,14 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Temukan di Google Play"
+                data-i18n-aria="hero_badge_aria"
                 ><img
                   src="assets/getiton.png"
                   alt="Temukan di Google Play"
                   width="148"
                   height="44"
               /></a>
-              <span class="store-note">Tersedia untuk perangkat Android</span>
+              <span class="store-note" data-i18n="hero_store_note">Tersedia untuk perangkat Android</span>
               <span class="hero-store-arrow" aria-hidden="true"></span>
             </div>
           </div>
@@ -1888,6 +1964,7 @@
             class="scroll-seal"
             href="index.html"
             aria-label="Lanjut ke cara kerja"
+            data-i18n-aria="hero_scroll_label"
             ><span></span
             ><svg aria-hidden="true">
               <use href="#icon-arrow" transform="rotate(90 12 12)" /></svg
@@ -1898,33 +1975,33 @@
       <section class="benefits" id="manfaat">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Semua fitur penting dalam satu aplikasi</h2>
-            <p>Labvōra membantu Anda mengelola jadwal dan reservasi dengan lebih praktis, jelas, dan aman.</p>
+            <h2 data-i18n="benefits_title">Semua fitur penting dalam satu aplikasi</h2>
+            <p data-i18n="benefits_sub">Labvōra membantu Anda mengelola jadwal dan reservasi dengan lebih praktis, jelas, dan aman.</p>
           </div>
           <div class="benefit-grid">
             <article class="benefit-card reveal">
               <img class="benefit-watermark" src="assets/logo.png" alt="" aria-hidden="true" />
               <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-search" /></svg></i>
-              <h3>Jelajahi Layanan</h3>
-              <p>Pilih layanan yang Anda butuhkan dengan informasi dan persiapan yang mudah dipahami.</p>
+              <h3 data-i18n="benefit_1_title">Jelajahi Layanan</h3>
+              <p data-i18n="benefit_1_desc">Pilih layanan yang Anda butuhkan dengan informasi dan persiapan yang mudah dipahami.</p>
             </article>
             <article class="benefit-card reveal">
               <img class="benefit-watermark" src="assets/logo.png" alt="" aria-hidden="true" />
               <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-calendar" /></svg></i>
-              <h3>Tentukan Jadwal</h3>
-              <p>Pilih tempat mitra serta tanggal dan waktu kunjungan yang paling sesuai untuk Anda.</p>
+              <h3 data-i18n="benefit_2_title">Tentukan Jadwal</h3>
+              <p data-i18n="benefit_2_desc">Pilih tempat mitra serta tanggal dan waktu kunjungan yang paling sesuai untuk Anda.</p>
             </article>
             <article class="benefit-card reveal">
               <img class="benefit-watermark" src="assets/logo.png" alt="" aria-hidden="true" />
               <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-tube" /></svg></i>
-              <h3>Pantau Status</h3>
-              <p>Pantau status pesanan Anda secara real-time, dari pemesanan hingga selesai.</p>
+              <h3 data-i18n="benefit_3_title">Pantau Status</h3>
+              <p data-i18n="benefit_3_desc">Pantau status pesanan Anda secara real-time, dari pemesanan hingga selesai.</p>
             </article>
             <article class="benefit-card reveal">
               <img class="benefit-watermark" src="assets/logo.png" alt="" aria-hidden="true" />
               <i class="benefit-icon"><svg aria-hidden="true"><use href="#icon-shield" /></svg></i>
-              <h3>Riwayat & Dokumen</h3>
-              <p>Akses ringkasan dan dokumen Anda yang tersimpan dengan aman dalam riwayat akun Anda.</p>
+              <h3 data-i18n="benefit_4_title">Riwayat & Dokumen</h3>
+              <p data-i18n="benefit_4_desc">Akses ringkasan dan dokumen Anda yang tersimpan dengan aman dalam riwayat akun Anda.</p>
             </article>
           </div>
         </div>
@@ -1934,6 +2011,7 @@
           <div
             class="screen-collage reveal"
             aria-label="Kumpulan layar aplikasi Labvōra"
+            data-i18n-aria="workflow_collage_label"
           >
             <div class="device mini-device device-a">
               <div class="device-screen">
@@ -1948,16 +2026,16 @@
                 <div class="fake-body">
                   <div class="fake-head">
                     <div>
-                      <small>Pilih layanan</small><strong>Layanan</strong>
+                      <small data-i18n="mock_choose_service">Pilih layanan</small><strong data-i18n="mock_services">Layanan</strong>
                     </div>
                     <span class="avatar">2</span>
                   </div>
-                  <div class="fake-search">Cari layanan</div>
+                  <div class="fake-search" data-i18n="mock_search_service">Cari layanan</div>
                   <div class="fake-card">
-                    <small>Paket tersedia</small><strong>Paket A</strong
-                    ><span>14 item</span>
+                    <small data-i18n="mock_pkg_available">Paket tersedia</small><strong>Paket A</strong
+                    ><span data-i18n="mock_pkg_a_items">14 item</span>
                   </div>
-                  <div class="fake-label">Pilihan lain</div>
+                  <div class="fake-label" data-i18n="mock_other_options">Pilihan lain</div>
                   <div class="fake-actions">
                     <div class="fake-action"><i>+</i>Paket B</div>
                     <div class="fake-action"><i>+</i>Paket C</div>
@@ -1965,7 +2043,7 @@
                   </div>
                 </div>
                 <div class="fake-nav">
-                  <b>Layanan</b><span>Jadwal</span><span>Profil</span>
+                  <b data-i18n="mock_services">Layanan</b><span data-i18n="mock_appt">Jadwal</span><span data-i18n="mock_nav_profile">Profil</span>
                 </div>
               </div>
             </div>
@@ -1982,23 +2060,23 @@
                 <div class="fake-body">
                   <div class="fake-head">
                     <div>
-                      <small>Nomor pesanan</small><strong>LV-0924</strong>
+                      <small data-i18n="mock_order_no">Nomor pesanan</small><strong>LV-0924</strong>
                     </div>
                     <span class="avatar">✓</span>
                   </div>
                   <div class="fake-card">
-                    <small>Status terbaru</small
-                    ><strong>Sedang diproses</strong
-                    ><span>Hari ini · 10.18</span>
+                    <small data-i18n="mock_latest_status">Status terbaru</small
+                    ><strong data-i18n="mock_processing_now">Sedang diproses</strong
+                    ><span data-i18n="mock_today_time">Hari ini · 10.18</span>
                   </div>
-                  <div class="fake-label">Perjalanan pesanan</div>
+                  <div class="fake-label" data-i18n="mock_order_journey">Perjalanan pesanan</div>
                   <div class="fake-progress">
-                    <b>Dibuat → Diproses</b>
+                    <b data-i18n="mock_status_journey">Dibuat → Diproses</b>
                     <div class="line"></div>
                   </div>
                 </div>
                 <div class="fake-nav">
-                  <b>Status</b><span>Detail</span><span>Bantuan</span>
+                  <b data-i18n="mock_status_tab">Status</b><span data-i18n="mock_details_tab">Detail</span><span data-i18n="mock_help_tab">Bantuan</span>
                 </div>
               </div>
             </div>
@@ -2015,12 +2093,12 @@
                 <div class="fake-body">
                   <div class="fake-head">
                     <div>
-                      <small>14 September</small><strong>Dokumen</strong>
+                      <small data-i18n="mock_latest_doc">Dokumen terbaru</small><strong data-i18n="mock_nav_docs">Dokumen</strong>
                     </div>
                     <span class="avatar">✓</span>
                   </div>
                   <div class="fake-card">
-                    <small>Tersedia</small
+                    <small data-i18n="mock_doc_available">Dokumen tersedia</small
                     ><strong>Paket A</strong
                     ><span>4 item utama</span>
                   </div>
@@ -2031,22 +2109,22 @@
                   </div>
                 </div>
                 <div class="fake-nav">
-                  <b>Dokumen</b><span>Unduh</span><span>Bagikan</span>
+                  <b data-i18n="mock_nav_docs">Dokumen</b><span data-i18n="mock_download_tab">Unduh</span><span data-i18n="mock_share_tab">Bagikan</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="workflow-copy reveal">
-            <h2>Cara Labvōra bekerja</h2>
-            <p>
+            <h2 data-i18n="workflow_title">Cara Labvōra bekerja</h2>
+            <p data-i18n="workflow_sub">
               Empat alur terintegrasi dari pemesanan hingga dokumen tersimpan.
             </p>
             <div class="steps">
               <article class="step">
                 <span class="step-number">1</span>
                 <div>
-                  <h3>Pilih layanan</h3>
-                  <p>
+                  <h3 data-i18n="step_1_title">Pilih layanan</h3>
+                  <p data-i18n="step_1_desc">
                     Tentukan layanan yang dibutuhkan sebelum jadwal kunjungan.
                   </p>
                 </div>
@@ -2054,8 +2132,8 @@
               <article class="step">
                 <span class="step-number">2</span>
                 <div>
-                  <h3>Tentukan tempat & jadwal</h3>
-                  <p>
+                  <h3 data-i18n="step_2_title">Tentukan tempat & jadwal</h3>
+                  <p data-i18n="step_2_desc">
                     Pilih lokasi mitra terdekat serta tanggal dan jam kunjungan.
                   </p>
                 </div>
@@ -2063,8 +2141,8 @@
               <article class="step">
                 <span class="step-number">3</span>
                 <div>
-                  <h3>Pantau progres pesanan</h3>
-                  <p>
+                  <h3 data-i18n="step_3_title">Pantau progres pesanan</h3>
+                  <p data-i18n="step_3_desc">
                     Ikuti status pesanan secara real-time, dari pembuatan
                     hingga selesai.
                   </p>
@@ -2073,8 +2151,8 @@
               <article class="step">
                 <span class="step-number">4</span>
                 <div>
-                  <h3>Akses dokumen & riwayat</h3>
-                  <p>
+                  <h3 data-i18n="step_4_title">Akses dokumen & riwayat</h3>
+                  <p data-i18n="step_4_desc">
                     Buka dan unduh dokumen di dalam aplikasi Labvōra. Semua akan tersimpan dengan aman dalam riwayat akun Anda
                   </p>
                 </div>
@@ -2087,8 +2165,8 @@
       <section class="cta" id="mulai">
         <div class="container cta-box reveal">
           <div class="cta-copy">
-            <h2>Siap mengatur jadwal Anda hari ini?</h2>
-            <p>Nikmati kemudahan pemesanan dan pengelolaan jadwal bersama Labvōra !</p>
+            <h2 data-i18n="cta_title">Siap mengatur jadwal Anda hari ini?</h2>
+            <p data-i18n="cta_sub">Nikmati kemudahan pemesanan dan pengelolaan jadwal bersama Labvōra !</p>
             <div class="store-row">
               <a
                 class="play-badge"
@@ -2096,12 +2174,13 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Temukan di Google Play"
+                data-i18n-aria="cta_badge_aria"
                 ><img
                   src="assets/getiton.png"
                   alt="Temukan di Google Play"
                   width="175"
                   height="52" /></a></
-              ><span class="store-note">Tersedia untuk perangkat Android</span>
+              ><span class="store-note" data-i18n="cta_store_note">Tersedia untuk perangkat Android</span>
             </div>
           </div>
           <div
@@ -2121,24 +2200,24 @@
                 <div class="fake-body">
                   <div class="fake-head">
                     <div>
-                      <small>Selamat pagi</small><strong>Alya Putri</strong>
+                      <small data-i18n="mock_greeting">Selamat pagi</small><strong>Alya Putri</strong>
                     </div>
                     <span class="avatar">AP</span>
                   </div>
-                  <div class="fake-search">Cari layanan</div>
+                  <div class="fake-search" data-i18n="mock_search_service">Cari layanan</div>
                   <div class="fake-card">
-                    <small>Jadwal berikutnya</small
+                    <small data-i18n="mock_next_schedule">Jadwal berikutnya</small
                     ><strong>Paket A</strong><span>Besok · 09.30</span>
                   </div>
-                  <div class="fake-label">Akses cepat</div>
+                  <div class="fake-label" data-i18n="cta_quick_access">Akses cepat</div>
                   <div class="fake-actions">
-                    <div class="fake-action"><i>⌕</i>Cari</div>
-                    <div class="fake-action"><i>□</i>Janji</div>
-                    <div class="fake-action"><i>✓</i>Dokumen</div>
+                    <div class="fake-action"><i>⌕</i><span data-i18n="mock_btn_search">Cari</span></div>
+                    <div class="fake-action"><i>□</i><span data-i18n="mock_appt">Janji</span></div>
+                    <div class="fake-action"><i>✓</i><span data-i18n="mock_nav_docs">Dokumen</span></div>
                   </div>
                 </div>
                 <div class="fake-nav">
-                  <b>Beranda</b><span>Pesanan</span><span>Dokumen</span>
+                  <b data-i18n="mock_nav_home">Beranda</b><span data-i18n="mock_nav_orders">Pesanan</span><span data-i18n="mock_nav_docs">Dokumen</span>
                 </div>
               </div>
             </div>
@@ -2155,22 +2234,22 @@
                 <div class="fake-body">
                   <div class="fake-head">
                     <div>
-                      <small>Dokumen terbaru</small><strong>Paket A</strong>
+                      <small data-i18n="mock_latest_doc">Dokumen terbaru</small><strong>Paket A</strong>
                     </div>
                     <span class="avatar">✓</span>
                   </div>
                   <div class="fake-card">
-                    <small>Tersedia</small><strong>Dokumen tersedia</strong
+                    <small data-i18n="mock_doc_available">Dokumen tersedia</small
                     ><span>14 Sep 2026</span>
                   </div>
-                  <div class="fake-label">Ringkasan</div>
+                  <div class="fake-label" data-i18n="mock_summary_label">Ringkasan</div>
                   <div class="fake-progress">
                     <b>4 item</b>
                     <div class="line"></div>
                   </div>
                 </div>
                 <div class="fake-nav">
-                  <b>Dokumen</b><span>Unduh</span><span>Profil</span>
+                  <b data-i18n="mock_nav_docs">Dokumen</b><span data-i18n="mock_download_tab">Unduh</span><span data-i18n="mock_nav_profile">Profil</span>
                 </div>
               </div>
             </div>
@@ -2191,14 +2270,14 @@
                 width="235"
                 height="112"
             /></a>
-            <p class="footer-copy">
+            <p class="footer-copy" data-i18n="footer_copy_index">
              Pilih layanan, jadwalkan kunjungan, pantau progres, dan akses dokumen dalam satu aplikasi.
             </p>
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2026 Labvōra. Hak cipta dilindungi.</span
-          ><span>Terakhir diperbarui: 14 September 2026</span>
+          <span data-i18n="footer_copyright">© 2026 Labvōra. Hak cipta dilindungi.</span
+          ><span data-i18n="footer_last_updated">Terakhir diperbarui: 14 September 2026</span>
         </div>
       </div>
       <div class="footer-watermark" aria-hidden="true">
@@ -2280,7 +2359,12 @@
             item.classList.add("visible");
           });
         }
+
       })();
+    </script>
+    <script src="assets/translations.js"></script>
+    <script>
+      initLabvoraLanguage();
     </script>
   </body>
 </html>
