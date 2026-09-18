@@ -92,9 +92,9 @@ const labvoraTranslations = {
 
     // Footer (Both index & privacy policy)
     footer_copy_index: "Choose services, schedule visits, track order progress, and access documents all in one app.",
-    footer_copy_policy: "Labvōra by Labvora Informatics Engineering educational project, all registration data is fictitious (dummy) data, never shared with third parties.",
-    footer_copyright: "© 2026 Labvōra Labvora Informatics Engineering. All rights reserved.",
-    footer_last_updated: "Last updated: September 17, 2026",
+    footer_copy_policy: "Choose services, schedule visits, track order progress, and access documents all in one app.",
+    footer_copyright: "© 2026 Labvōra. All rights reserved.",
+    footer_last_updated: "Last updated: 14 September 2026",
 
     // privacy-policy.html Specific
     pp_meta_title: "Labvōra Privacy Policy",
@@ -277,9 +277,9 @@ const labvoraTranslations = {
 
     // Footer (Both index & privacy policy)
     footer_copy_index: "Pilih layanan, jadwalkan kunjungan, pantau progres, dan akses dokumen dalam satu aplikasi.",
-    footer_copy_policy: "Labvōra proyek edukasi oleh Labvora Teknik Informatika, seluruh data registrasi adalah data fiktif (dummy), dan tidak pernah dibagikan kepada pihak ketiga.",
-    footer_copyright: "© 2026 Labvōra Labvora Teknik Informatika. Seluruh hak cipta dilindungi undang-undang.",
-    footer_last_updated: "Terakhir diperbarui: 17 September 2026",
+    footer_copy_policy: "Pilih layanan, jadwalkan kunjungan, pantau progres, dan akses dokumen dalam satu aplikasi.",
+    footer_copyright: "© 2026 Labvōra. Hak cipta dilindungi.",
+    footer_last_updated: "Terakhir diperbarui: 14 September 2026",
 
     // privacy-policy.html Specific
     pp_meta_title: "Kebijakan Privasi Labvōra",
